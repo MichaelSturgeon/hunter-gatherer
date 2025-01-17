@@ -5,12 +5,13 @@ const NavBar = () => {
   return (
     <Navbar expand="md" fixed='top'>
         <Container>
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand>Hunter<i class="fa-brands fa-raspberry-pi fa-xl"></i>Gatherer</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav className="mr-auto">
-                    <Nav.Link href="#home">Home</Nav.Link>
-                    <Nav.Link href="#link">Link</Nav.Link>                    
+                    <Nav className="ml-auto text-left">
+                    <Nav.Link >Home</Nav.Link>
+                    <Nav.Link >Login</Nav.Link>                    
+                    <Nav.Link >Register</Nav.Link>                    
                     </Nav>                        
             </Navbar.Collapse>
         </Container>        
