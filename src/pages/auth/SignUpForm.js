@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import Styles from "../../App.module.css";
-
+import appStyles from "../../App.module.css";
+import signUpStyles from "../../styles/SignInUpForm.module.css";
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import axios from "axios";
 
@@ -32,14 +32,15 @@ const SignUpForm = () => {
   }
 
   return (
-    <Row >
-      <Col className="my-auto py-2 p-md-2" md={6}>
-        <Container className={`${Styles.Content} p-4`}>
-          <h1 >Register</h1>
+    <Row className={signUpStyles.Row}>
+      <Col className="my-auto py-2 p-sm-2" md={{ span: 6, offset: 3 }}>
+        <Container className={`${appStyles.Content} p-4`}>
+          <h1 className={signUpStyles.Header}>Create an account</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="username">
                     <Form.Label className="d-none">Username</Form.Label>
-                    <Form.Control 
+                    <Form.Control
+                    className={signUpStyles.Input} 
                     type="text" 
                     placeholder="Username"
                     name="username"
@@ -49,7 +50,8 @@ const SignUpForm = () => {
 
                 <Form.Group controlId="password1">
                     <Form.Label className="d-none">Password</Form.Label>
-                    <Form.Control 
+                    <Form.Control
+                    className={signUpStyles.Input}
                     type="password" 
                     placeholder="Password" 
                     name="password1"
@@ -59,7 +61,8 @@ const SignUpForm = () => {
 
                 <Form.Group controlId="password2">
                     <Form.Label className="d-none">Password(again)</Form.Label>
-                    <Form.Control 
+                    <Form.Control
+                    className={signUpStyles.Input}
                     type="password" 
                     placeholder="Password(again)" 
                     name="password2"
@@ -67,12 +70,12 @@ const SignUpForm = () => {
                     onChange={handleChange}/>
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button className={signUpStyles.Button} type="submit">
                     Register
                 </Button>
             </Form>
-            <Link  to="/login">
-            <span>Login here</span>
+            <Link className={signUpStyles.Link} to="/login">
+            Already have an account? <span >Login here</span>
           </Link>
         </Container>        
       </Col>

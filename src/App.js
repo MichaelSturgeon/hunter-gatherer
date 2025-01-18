@@ -1,4 +1,4 @@
-import styles from './App.module.css';
+import appStyles from './App.module.css';
 import NavBar from './components/NavBar';
 import { Container } from 'react-bootstrap';
 import {Route, Switch} from 'react-router-dom'
@@ -8,9 +8,9 @@ import SignInForm from './pages/auth/SignInForm';
 
 function App() {
   return (
-    <div className={styles.App}>
+    <div className={appStyles.App}>
       <NavBar/>
-      <Container className={styles.Main}>
+      <Container className={appStyles.Main}>
         <Switch>
           <Route exact path='/' render={() => <h1>Home Page</h1>} />        
           <Route exact path='/login' render={() => <SignInForm/>} />
