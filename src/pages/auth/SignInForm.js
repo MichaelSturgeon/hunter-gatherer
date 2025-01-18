@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useHistory} from "react-router-dom";
 import Styles from "../../App.module.css";
-
+import signInStyles from "../../styles/SignInUpForm.module.css";
 import { Form, Button, Col, Row, Container } from "react-bootstrap";
 import axios from "axios";
 
@@ -31,14 +31,15 @@ const SignInForm = () => {
     }
 
   return (
-    <Row >
-      <Col className="my-auto py-2 p-md-2" md={6}>
+    <Row className={signInStyles.Row}>
+      <Col className="my-auto py-2 p-md-2" md={{ span: 6, offset: 3 }}>
         <Container className={`${Styles.Content} p-4`}>
-          <h1 >Login</h1>
+          <h1 className={signInStyles.Header}>Login to your account</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group controlId="username">
                     <Form.Label className="d-none">Username</Form.Label>
-                    <Form.Control 
+                    <Form.Control
+                    className={signInStyles.Input}
                     type="text" 
                     placeholder="Username"
                     name="username"
@@ -48,7 +49,8 @@ const SignInForm = () => {
 
                 <Form.Group controlId="password">
                     <Form.Label className="d-none">Password</Form.Label>
-                    <Form.Control 
+                    <Form.Control
+                    className={signInStyles.Input}
                     type="password" 
                     placeholder="Password" 
                     name="password"
@@ -56,12 +58,12 @@ const SignInForm = () => {
                     onChange={handleChange}/>
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button className={signInStyles.Button} type="submit">
                     Login
                 </Button>
             </Form>
-            <Link  to="/register">
-            <span>Register here</span>
+            <Link className={signInStyles.Link} to="/register">
+            Not got an account?<span>Register here</span>
           </Link>
         </Container>        
       </Col>
