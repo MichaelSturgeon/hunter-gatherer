@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import appStyles from "../../App.module.css";
 import signUpStyles from "../../styles/SignInUpForm.module.css";
-import { Form, Button, Col, Row, Container } from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 
 const SignUpForm = () => {
@@ -13,6 +13,9 @@ const SignUpForm = () => {
   });
 
   const { username, password1, password2 } = signUpData;
+
+  const [errors, setErrors] = useState({}); 
+
   const history = useHistory();
   const handleChange = (event) => {
     setSignUpData({
@@ -27,7 +30,7 @@ const SignUpForm = () => {
       await axios.post('/dj-rest-auth/registration/', signUpData);
       history.push('/login');
     } catch (error) {
-      
+      setErrors(error.response?.data);
     }
   }
 
@@ -46,7 +49,10 @@ const SignUpForm = () => {
                     name="username"
                     value={username}
                     onChange={handleChange}/>                    
-                </Form.Group>                
+                </Form.Group>
+                {errors.username?.map((message, idx) =>
+                  <Alert variant='warning' key={idx}>{message}</Alert>
+                )}               
 
                 <Form.Group controlId="password1">
                     <Form.Label className="d-none">Password</Form.Label>
@@ -58,6 +64,9 @@ const SignUpForm = () => {
                     value={password1}
                     onChange={handleChange}/>
                 </Form.Group>
+                {errors.password1?.map((message, idx) =>
+                  <Alert variant='warning' key={idx}>{message}</Alert>
+                )}
 
                 <Form.Group controlId="password2">
                     <Form.Label className="d-none">Password(again)</Form.Label>
@@ -69,10 +78,16 @@ const SignUpForm = () => {
                     value={password2}
                     onChange={handleChange}/>
                 </Form.Group>
+                {errors.password2?.map((message, idx) =>
+                  <Alert variant='warning' key={idx}>{message}</Alert>
+                )}
 
                 <Button className={signUpStyles.Button} type="submit">
                     Register
                 </Button>
+                {errors.non_field_errors?.map((message, idx) =>
+                  <Alert variant='warning' key={idx}>{message}</Alert>
+                )}
             </Form>
             <Link className={signUpStyles.Link} to="/login">
             Already have an account? <span >Login here</span>

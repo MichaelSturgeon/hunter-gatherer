@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useHistory} from "react-router-dom";
 import Styles from "../../App.module.css";
 import signInStyles from "../../styles/SignInUpForm.module.css";
-import { Form, Button, Col, Row, Container } from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 
 const SignInForm = () => {
@@ -12,6 +12,9 @@ const SignInForm = () => {
     });
 
     const {username, password} = signInData
+
+    const [errors, setErrors] = useState({});
+
     const history = useHistory();
     const handleChange = (event) => {
       setSignInData({
@@ -26,6 +29,7 @@ const SignInForm = () => {
         await axios.post('/dj-rest-auth/login/', signInData);
         history.push('/');        
       } catch (error) {
+        setErrors(error.response?.data);
         
       }
     }
@@ -45,7 +49,10 @@ const SignInForm = () => {
                     name="username"
                     value={username}
                     onChange={handleChange}/>                    
-                </Form.Group>                
+                </Form.Group>
+                {errors.username?.map((message, idx) =>
+                  <Alert variant='warning' key={idx}>{message}</Alert>
+                )}               
 
                 <Form.Group controlId="password">
                     <Form.Label className="d-none">Password</Form.Label>
@@ -57,13 +64,19 @@ const SignInForm = () => {
                     value={password}
                     onChange={handleChange}/>
                 </Form.Group>
+                {errors.password?.map((message, idx) =>
+                  <Alert variant='warning' key={idx}>{message}</Alert>
+                )}
 
                 <Button className={signInStyles.Button} type="submit">
                     Login
                 </Button>
+                {errors.non_field_errors?.map((message, idx) =>
+                  <Alert variant='warning' key={idx}>{message}</Alert>
+                )}
             </Form>
             <Link className={signInStyles.Link} to="/register">
-            Not got an account?<span>Register here</span>
+            Not got an account? <span>Register here</span>
           </Link>
         </Container>        
       </Col>
