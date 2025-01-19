@@ -8,7 +8,18 @@ const NavBar = () => {
 
   const currentUser = useCurrentUser();
 
-  const loggedInIcons = <>{currentUser?.username}</>;
+  const loggedInIcons = <>
+  <NavLink exact className={navStyles.NavLink}  
+  to='/'
+  onClick={() => {}}
+  >Logout</NavLink>
+
+  <NavLink exact className={navStyles.NavLink}  
+  to={`/profiles/${currentUser?.profile_id}`}
+  onClick={() => {}}
+  >
+    {currentUser?.username}</NavLink> 
+  </>;
 
   const loggedOutIcons = <>
   <NavLink exact className={navStyles.NavLink} 
@@ -18,7 +29,6 @@ const NavBar = () => {
   <NavLink exact className={navStyles.NavLink} 
   activeClassName={navStyles.Active} 
   to='/register'>Register</NavLink>
-
   </>;
 
   return (

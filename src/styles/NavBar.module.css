@@ -7,6 +7,10 @@
   padding: 5px;
 }
 
+.NavLink::first-letter {
+  text-transform: capitalize;
+}
+
 .NavLink i {
   color: #bc1142;
   font-size: 3rem;
