@@ -6,7 +6,9 @@ import './api/axiosDefaults'
 import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
 
+
 function App() {
+  
   return (
     <div className={appStyles.App}>
       <NavBar/>
@@ -18,7 +20,7 @@ function App() {
           <Route render={() => <h1>404 Page not found!</h1>} />
         </Switch>
       </Container>
-    </div>
+    </div>        
   );
 }
 
