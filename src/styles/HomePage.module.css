@@ -1,0 +1,30 @@
+.Button {
+    background-color: transparent;
+    border-color: transparent;
+    text-decoration: none;
+    color: #BFC0C0;
+}
+
+.Button:hover {
+    text-decoration: none;
+    background-color: transparent;
+    border-color: transparent;
+    color: #252525;
+}
+  
+.Button:focus {
+    text-decoration: none;
+    border-color: transparent;
+}
+
+i {    
+    font-size: 2rem;
+}
+
+i:hover {    
+    color: #252525;
+}
+
+span {
+    display: block;
+}
