@@ -1,3 +1,44 @@
+.Jumbotron {
+    background-image: url(/src/assests/images/jumbotron.jpg);
+    object-fit: contain;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: left top;
+    height: 40vh;
+    width: 100%;
+    border-radius: 10px;
+    position: relative;
+    padding: 0;
+    margin: 0; 
+}
+
+.overlay {
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    border-radius: 10px;
+    padding: 10px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    align-content: center;    
+}
+
+.Header {
+    font-size: 2rem;
+    color: #ffffff;    
+    max-width: 800px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    color: #ffffff;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .Button {
     background-color: transparent;
     border-color: transparent;
@@ -25,6 +66,6 @@ i:hover {
     color: #252525;
 }
 
-span {
+.Button span {
     display: block;
 }
