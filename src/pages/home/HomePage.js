@@ -11,7 +11,7 @@ const HomePage = () => {
         <Jumbotron className={homePageStyle.Jumbotron}>
           <Container className={`${homePageStyle.overlay} p-3`}>
             <h1 className={homePageStyle.Header}>Compare, Decide, Save<span className='d-none d-sm-block'> - The Ultimate Product Comparison Tool!</span></h1>
-            <p>Find the best deals and make smarter buying decisions with our comprehensive product comparisons. Select a category below to begin!</p>           
+            <p className={homePageStyle.paragraph}>Find the best deals and make smarter buying decisions with our comprehensive product comparisons. Select a category below to begin!</p>           
           </Container>
         </Jumbotron>        
                 
