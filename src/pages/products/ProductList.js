@@ -1,8 +1,24 @@
-import React from 'react'
-import { Card } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React, { useEffect, useState } from 'react'
+import { axiosReq } from '../../api/axiosDefaults';
+import { Card } from 'react-bootstrap';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ProductList = () => {
+  const [products, setProducts] = useState({ results: [] });
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const { data } = await axiosReq.get(`/products/`);
+        setProducts(data);
+        
+      } catch (error) {        
+      }
+    };
+    
+    fetchProducts();
+  }, []);
+
 
   return (
     <Card>
@@ -19,7 +35,7 @@ const ProductList = () => {
       <Card.Footer>
         <small className="text-muted">Last Updated</small>
       </Card.Footer>
-    </Card>
+    </Card>          
           
   )
 }
