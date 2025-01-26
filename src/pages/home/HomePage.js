@@ -16,7 +16,7 @@ const HomePage = () => {
         </Jumbotron>        
                 
         <Container className={`${appStyles.Content} mt-2`}>
-          <Link >
+          <Link to="/products/boardgames" >
           <Button className={homePageStyle.Button} variant="link"><i class="fa-solid fa-dice"></i><span>Board Games</span></Button>
           </Link>
           <Link >

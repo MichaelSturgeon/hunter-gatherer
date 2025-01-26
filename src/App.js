@@ -7,6 +7,7 @@ import SignUpForm from './pages/auth/SignUpForm';
 import SignInForm from './pages/auth/SignInForm';
 import HomePage from './pages/home/HomePage';
 import NotFound from './pages/help/NotFound';
+import ProductList from './pages/products/ProductList';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <Container className={appStyles.Main}>
         <Switch>
           <Route exact path='/' render={() => <HomePage/>} />        
+          <Route exact path='/boardgames' render={() => <ProductList/>} />        
           <Route exact path='/login' render={() => <SignInForm/>} />
           <Route exact path='/register' render={() => <SignUpForm/>} />
           <Route render={() => <NotFound/>} />
