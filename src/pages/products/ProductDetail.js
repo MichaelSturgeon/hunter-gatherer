@@ -5,6 +5,7 @@ import appStyles from '../../App.module.css'
 import navStyles from '../../styles/NavBar.module.css'
 import detailStyles from '../../styles/ProductDetail.module.css'
 import { Card, Col, Container, Row, Spinner } from 'react-bootstrap';
+import ProductRating from '../../components/ProductRating';
 
 const ProductDetail = () => {
     const {id} = useParams();
@@ -30,8 +31,7 @@ const ProductDetail = () => {
 
   return (
     <Row xs={12}>
-      <Col className="my-auto py-2 p-md-2">        
-        
+      <Col className="my-auto py-2 p-md-2"> 
         {product? (
           <>          
             <Container key={product.id} className={`${appStyles.Content} mb-2`}>
@@ -47,7 +47,9 @@ const ProductDetail = () => {
                 <Card.Title className={detailStyles.Header}>{product.name}</Card.Title>
                 <Card.Body className="pb-0">
                   <Card.Text>{product.description}</Card.Text>
-                  <Card.Text>Rating({product.reviews_count})</Card.Text>
+                  <Card.Text>
+                    <ProductRating id={product.id} reviewsCount={product.reviews_count}/>
+                  </Card.Text>
                   <Card.Text>£{product.price}</Card.Text>
                   <small className="text-muted">Last Updated: {product.updated_at}</small>
                 </Card.Body>                
@@ -75,7 +77,7 @@ const ProductDetail = () => {
                         <Link exact className={navStyles.NavLink}>
                           <Card.Text className="mb-0">{review.owner}</Card.Text>
                         </Link>
-                        <span className='ml-auto my-auto mr-2'>                        
+                        <span className="ml-auto my-auto mr-2">                        
                           {Array.from({ length: review.rating }, (_, index) => (
                             <i key={index} className="fa-solid fa-star p-0"></i>
                           ))}                           

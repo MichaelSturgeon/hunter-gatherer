@@ -3,6 +3,7 @@ import { axiosReq } from '../../api/axiosDefaults';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { Card, Row, Col, Spinner } from 'react-bootstrap';
 import appStyles from "../../App.module.css";
+import ProductRating from '../../components/ProductRating';
 
 const ProductList = () => {
 
@@ -34,7 +35,9 @@ const ProductList = () => {
               </Link>
               <Card.Body>
                 <Card.Title>{product.name}</Card.Title>
-                <Card.Text>Rating</Card.Text>
+                <Card.Text>
+                  <ProductRating id={product.id} reviewsCount={product.reviews_count}/>
+                </Card.Text>
                 <Card.Text>£{product.price}</Card.Text>
                 <small className="text-muted">Last Updated: {product.updated_at}</small> 
               </Card.Body>  

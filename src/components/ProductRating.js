@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { axiosReq } from '../api/axiosDefaults';
 
-const ProductRating = () => {  
+const ProductRating = (props) => {
+  const { id, reviewsCount } = props;
   const [reviews, setReviews] = useState({ results: [] });
 
   const productReviews = reviews.results.filter((review) => review.product_id === parseInt(id));
@@ -11,9 +12,7 @@ const ProductRating = () => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{data: reviews}] = await Promise.all([
-          axiosReq.get(`/reviews/`)
-        ]);
+        const {data: reviews} = await axiosReq.get(`/reviews/`);
         setReviews(reviews);
       } catch (error) {         
       }
@@ -29,7 +28,8 @@ const ProductRating = () => {
           <span >                        
             {Array.from({ length: rating }, (_, index) => (
             <i key={index} className="fa-solid fa-star p-0"></i>
-            ))}                                      
+            ))}
+            ({reviewsCount})                          
           </span>
         :
           <span>No rating available</span>
