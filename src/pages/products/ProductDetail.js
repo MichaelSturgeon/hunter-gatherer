@@ -77,7 +77,7 @@ const ProductDetail = () => {
                         <Link exact className={navStyles.NavLink}>
                           <Card.Text className="mb-0">{review.owner}</Card.Text>
                         </Link>
-                        <span className="ml-auto my-auto mr-2">                        
+                        <span className={`${detailStyles.stars} ml-auto my-auto mr-2`}>                        
                           {Array.from({ length: review.rating }, (_, index) => (
                             <i key={index} className="fa-solid fa-star p-0"></i>
                           ))}                           

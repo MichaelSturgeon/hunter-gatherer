@@ -23,7 +23,7 @@
     align-items:end; 
 }
 
-.cardHeader i {
+.stars i{
     font-size: 1.2rem;
     color: #bc1142;
 }

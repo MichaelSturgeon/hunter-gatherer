@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { axiosReq } from '../api/axiosDefaults';
+import detailStyles from '../styles/ProductDetail.module.css'
 
 const ProductRating = (props) => {
   const { id, reviewsCount } = props;
@@ -25,7 +26,7 @@ const ProductRating = (props) => {
   return (
     <>
     {rating > 0 ? 
-          <span >                        
+          <span className={detailStyles.stars} >                        
             {Array.from({ length: rating }, (_, index) => (
             <i key={index} className="fa-solid fa-star p-0"></i>
             ))}
