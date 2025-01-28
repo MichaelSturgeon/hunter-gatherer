@@ -17,7 +17,7 @@ const ProductDetail = () => {
         try {
           const [{ data: products }, {data: reviews}] = await Promise.all([
             axiosReq.get(`/products/${id}`),
-            axiosReq.get(`/reviews/?products=${id}`)
+            axiosReq.get(`/reviews/`)
           ]);
           setProduct({ results: [products] });
           setReviews(reviews);
@@ -26,9 +26,7 @@ const ProductDetail = () => {
       };
   
       handleMount();
-    }, [id]);
-
-    
+    }, [id]);   
 
   return (
     <Row xs={12}>
@@ -63,10 +61,9 @@ const ProductDetail = () => {
           )}
        
         
-          {reviews.results.length ? (
-            
-              <Container className={appStyles.Content}>
-                {reviews.results.map((review) => (
+          {reviews.results.length ? (            
+              <Container className={appStyles.Content}>                
+                {reviews.results.filter((review) => review.product_id === parseInt(id)).map((review) => (
                   <Card key={review.id} className="mb-1 border-0">
                     <Card.Header className={`${detailStyles.cardHeader} d-flex border-0 p-0 justify-content-start`}>
                       <Card.Img
