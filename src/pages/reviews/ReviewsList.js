@@ -4,6 +4,7 @@ import appStyles from '../../App.module.css'
 import navStyles from '../../styles/NavBar.module.css'
 import detailStyles from '../../styles/ProductDetail.module.css'
 import { Card, Container, Spinner } from 'react-bootstrap';
+import ReviewForm from '../reviews/ReviewForm';
 
 const ReviewsList = (props) => {
 
@@ -13,7 +14,8 @@ const ReviewsList = (props) => {
 
     <>
         {reviews.results.length ? (            
-            <Container className={appStyles.Content}>                
+            <Container className={appStyles.Content}>
+                <ReviewForm />               
             {reviews.results.filter((review) => review.product_id === parseInt(id)).map((review) => (
                 <Card key={review.id} className="mb-1 border-0">
                 <Card.Header className={`${detailStyles.cardHeader} d-flex border-0 p-0 justify-content-start`}>
