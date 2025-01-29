@@ -3,6 +3,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { Button, Form, Alert, Card} from 'react-bootstrap';
 import { axiosRes } from '../../api/axiosDefaults';
 import reviewStyles from '../../styles/Reviews.module.css'
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ReviewForm = (props) => {
     const { prodId } = props;
@@ -32,13 +33,18 @@ const ReviewForm = (props) => {
         } catch (error) {
             setErrors(error.response?.data);   
         }        
-    };    
+    };
+    
+    const [formToggle, setFormToggle] = useState(false)
+    const toggle = () => {
+        setFormToggle(!formToggle);        
+    }
     
   return (
             
     currentUser ? (
-        <>
-        <Card className="border-0">
+        formToggle? (
+            <Card className="border-0">
             <Card.Header className={`${reviewStyles.cardHeader} d-flex border-0 p-0 justify-content-start`}>
                 <Card.Img 
                     src={currentUser.profile_image} 
@@ -46,11 +52,12 @@ const ReviewForm = (props) => {
                     className={reviewStyles.avatar}
                 />            
                 <Card.Text className={reviewStyles.username}>{currentUser.username}</Card.Text>
+                <Button onClick={toggle} className={`${reviewStyles.formClose} ml-auto my-auto mr-2`}><i class="fa-solid fa-xmark"></i></Button>
             </Card.Header>
             <Card.Body>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group controlId="content">
-                        <Form.Label className="my-1 mr-2 d-none">Rating</Form.Label>
+                        <Form.Label className="d-none">Rating</Form.Label>
                         <Form.Control                    
                             className={`${reviewStyles.Input}`}
                             size='lg'                       
@@ -98,10 +105,16 @@ const ReviewForm = (props) => {
                 </Form>
             </Card.Body>
         </Card>
-        
-        </>
+
+        ) : (
+            <Button onClick={toggle} className={reviewStyles.Button}>Leave a review</Button>
+        )
+
     ) : (
-        <p>Please log in to leave a review.</p>
+        <Link to="/login">
+            <Button onClick={toggle} className={reviewStyles.Button}>Login to leave a review</Button>
+        </Link>
+        
     )         
   )
 }

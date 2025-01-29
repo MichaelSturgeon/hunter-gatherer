@@ -54,3 +54,32 @@
   .Button:focus {
     background-color: #bc1142;
   }
+
+  .formClose {
+    background-color: #ffffff;
+	color: #252525;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+  }
+
+  .formClose:hover {
+    background-color: #ffffff;
+    color: #252525;
+    cursor: pointer;    
+  }
+
+  .formClose:hover:active {
+    background-color: #ffffff !important;
+    color: #252525;
+  }
+
+  .formClose:active {
+    background-color: #ffffff !important;
+    color: #252525;
+  }
+
+  .formClose:focus {
+    background-color: #ffffff;
+    color: #252525;
+  }
