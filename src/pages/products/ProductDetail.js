@@ -27,7 +27,8 @@ const ProductDetail = () => {
       };
   
       handleMount();
-    }, [id]);   
+    },[id]);  
+    
 
   return (
     <Row xs={12}>
@@ -54,7 +55,7 @@ const ProductDetail = () => {
                   <small className="text-muted">Last Updated: {product.updated_at}</small>
                 </Card.Body>                
             </Container>
-            <ReviewsList id={product.id} reviews={reviews}/>
+            <ReviewsList prodId={product.id} reviews={reviews}/>
           </>            
           ) : (            
             <Spinner animation="border" role="status">
