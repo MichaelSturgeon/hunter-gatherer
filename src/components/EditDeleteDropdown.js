@@ -16,11 +16,18 @@ const Ellipsis = React.forwardRef(({ onClick }, ref) => (
 ));
 
 const EditDeleteDropdown = (props) => {    
-    const { revId, setReviews } = props;
+    const { revId, setReviews, setProduct } = props;
 
     const handleDelete = async () => {
         try {
-          await axiosRes.delete(`/reviews/${revId}/`);          
+          await axiosRes.delete(`/reviews/${revId}/`);
+          
+          setProduct((prevProduct) => ({
+            results: [{
+              ...prevProduct.results[0],
+              reviews_count: prevProduct.results[0].reviews_count - 1,
+            }],
+          }));
     
           setReviews((prevReviews) => ({
             ...prevReviews,

@@ -10,18 +10,18 @@ import EditDeleteDropdown from '../../components/EditDeleteDropdown';
 const ReviewsList = (props) => {
   const currentUser = useCurrentUser()
  
-  const { prodId, reviews, setReviews } = props;
+  const { prodId, reviews, setReviews, setProduct } = props;
     
   return (
 
     <>
         {reviews.results.length ? (            
             <Container className={appStyles.Content}>
-                <ReviewForm prodId={prodId} />               
+                <ReviewForm prodId={prodId} setProduct={setProduct} setReviews={setReviews}/>               
             {reviews.results.filter((review) => review.product_id === parseInt(prodId)).map((review) => (
                 <Card key={review.id} className="border-0">
                     {currentUser?.username === review.owner && (
-                    <EditDeleteDropdown revId={review.id} setReviews={setReviews} />
+                    <EditDeleteDropdown revId={review.id} setReviews={setReviews} setProduct={setProduct}/>
                     )}
                     <Card.Header className={`${reviewStyles.cardHeader} d-flex border-0 p-0 justify-content-start`}>
                         <Card.Img

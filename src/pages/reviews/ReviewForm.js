@@ -6,7 +6,7 @@ import reviewStyles from '../../styles/Reviews.module.css'
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ReviewForm = (props) => {
-    const { prodId } = props;
+    const { prodId, setProduct, setReviews } = props;
     const currentUser = useCurrentUser();
 
     const [reviewData, setReviewData] = useState({
@@ -28,8 +28,23 @@ const ReviewForm = (props) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-        await axiosRes.post("/reviews/", reviewData);
-        setReviewData({ rating: "", content: "" });        
+        
+        const { data: newReview } = await axiosRes.post("/reviews/", reviewData);
+        
+        setReviewData({ rating: "", content: "" });
+        
+        setProduct((prevProduct) => ({
+            results: [{
+              ...prevProduct.results[0],
+              reviews_count: prevProduct.results[0].reviews_count + 1,
+            }],
+          }));
+
+        setReviews((prevReviews) => ({
+            ...prevReviews, 
+            results: [newReview, ...prevReviews.results],
+            }));
+        
         } catch (error) {
             setErrors(error.response?.data);   
         }        
