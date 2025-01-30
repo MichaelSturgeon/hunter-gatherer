@@ -52,7 +52,7 @@ const ReviewForm = (props) => {
                     className={reviewStyles.avatar}
                 />            
                 <Card.Text className={reviewStyles.username}>{currentUser.username}</Card.Text>
-                <Button onClick={toggle} className={`${reviewStyles.formClose} ml-auto my-auto mr-2`}><i class="fa-solid fa-xmark"></i></Button>
+                <Button onClick={toggle} variant="link" className={`${reviewStyles.formClose} ml-auto my-auto mr-2`}><i class="fa-solid fa-xmark"></i></Button>
             </Card.Header>
             <Card.Body>
                 <Form onSubmit={handleSubmit}>
