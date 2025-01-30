@@ -10,7 +10,7 @@ import EditDeleteDropdown from '../../components/EditDeleteDropdown';
 const ReviewsList = (props) => {
   const currentUser = useCurrentUser()
  
-  const { prodId, reviews } = props;
+  const { prodId, reviews, setReviews } = props;
     
   return (
 
@@ -20,9 +20,9 @@ const ReviewsList = (props) => {
                 <ReviewForm prodId={prodId} />               
             {reviews.results.filter((review) => review.product_id === parseInt(prodId)).map((review) => (
                 <Card key={review.id} className="border-0">
-                    {currentUser?.username === review.owner? (
-                        <EditDeleteDropdown />
-                    ) : (null)}
+                    {currentUser?.username === review.owner && (
+                    <EditDeleteDropdown revId={review.id} setReviews={setReviews} />
+                    )}
                     <Card.Header className={`${reviewStyles.cardHeader} d-flex border-0 p-0 justify-content-start`}>
                         <Card.Img
                         variant="top"

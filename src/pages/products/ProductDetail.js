@@ -55,7 +55,7 @@ const ProductDetail = () => {
                   <small className="text-muted">Last Updated: {product.updated_at}</small>
                 </Card.Body>                
             </Container>
-            <ReviewsList prodId={product.id} reviews={reviews}/>
+            <ReviewsList prodId={product.id} reviews={reviews} setReviews={setReviews}/>
           </>            
           ) : (            
             <Spinner animation="border" role="status">

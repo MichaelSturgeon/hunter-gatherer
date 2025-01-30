@@ -1,6 +1,7 @@
 import React from "react";
 import Dropdown from "react-bootstrap/Dropdown";
 import reviewStyles from "../styles/Reviews.module.css"
+import { axiosRes } from "../api/axiosDefaults";
 
 const Ellipsis = React.forwardRef(({ onClick }, ref) => (
 
@@ -14,8 +15,20 @@ const Ellipsis = React.forwardRef(({ onClick }, ref) => (
     />  
 ));
 
-const EditDeleteDropdown = (props) => {
-    const { handleEdit, handleDelete } = props;
+const EditDeleteDropdown = (props) => {    
+    const { revId, setReviews } = props;
+
+    const handleDelete = async () => {
+        try {
+          await axiosRes.delete(`/reviews/${revId}/`);          
+    
+          setReviews((prevReviews) => ({
+            ...prevReviews,
+            results: prevReviews.results.filter((review) => review.id !== revId),
+          }));
+        } catch (error) {            
+        }
+      };
 
     return (
     <Dropdown className={`${reviewStyles.reviewEdit} ml-auto mr-2`} drop="left">
@@ -28,7 +41,7 @@ const EditDeleteDropdown = (props) => {
         >
         <Dropdown.Item
             className={reviewStyles.reviewEdit}
-            onClick={handleEdit}
+            // onClick={handleEdit}
             aria-label="edit review"
         >
             <i className="fa-solid fa-pencil"/>
