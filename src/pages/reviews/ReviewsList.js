@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import appStyles from '../../App.module.css'
 import reviewStyles from '../../styles/Reviews.module.css'
 import detailStyles from '../../styles/ProductDetail.module.css'
@@ -6,11 +6,16 @@ import { Card, Container, Spinner } from 'react-bootstrap';
 import ReviewForm from '../reviews/ReviewForm';
 import { useCurrentUser } from '../../contexts/CurrentUserContext';
 import EditDeleteDropdown from '../../components/EditDeleteDropdown';
+import ReviewEditForm from '../../pages/reviews/ReviewEditForm';
 
 const ReviewsList = (props) => {
-  const currentUser = useCurrentUser()
- 
+  const currentUser = useCurrentUser() 
   const { prodId, reviews, setReviews, setProduct } = props;
+
+  const [editFormToggle, setEditFormToggle] = useState(false)
+    const toggle = () => {
+    setEditFormToggle(!editFormToggle);        
+    }
     
   return (
 
@@ -21,7 +26,13 @@ const ReviewsList = (props) => {
             {reviews.results.filter((review) => review.product_id === parseInt(prodId)).map((review) => (
                 <Card key={review.id} className="border-0">
                     {currentUser?.username === review.owner && (
-                    <EditDeleteDropdown revId={review.id} setReviews={setReviews} setProduct={setProduct}/>
+                    <EditDeleteDropdown 
+                    revId={review.id} 
+                    setReviews={setReviews} 
+                    setProduct={setProduct}
+                    toggle={toggle}
+                    
+                    />
                     )}
                     <Card.Header className={`${reviewStyles.cardHeader} d-flex border-0 p-0 justify-content-start`}>
                         <Card.Img
@@ -42,9 +53,15 @@ const ReviewsList = (props) => {
                     <Card.Body className="pb-0">
                         <Card.Text>{review.content}</Card.Text>                    
                         <small className="text-muted">Created: {review.created_at}</small>                    
-                    </Card.Body>
-                </Card>                
-            ))}
+                    </Card.Body>                
+
+                {editFormToggle && <ReviewEditForm
+                toggle={toggle}
+                review={review}
+                />}
+              </Card>
+            ))}          
+            
             </Container>        
             ) : (
             <Spinner animation="border" role="status">

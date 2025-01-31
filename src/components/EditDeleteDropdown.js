@@ -16,7 +16,7 @@ const Ellipsis = React.forwardRef(({ onClick }, ref) => (
 ));
 
 const EditDeleteDropdown = (props) => {    
-    const { revId, setReviews, setProduct } = props;
+    const { revId, setReviews, setProduct, toggle } = props;
 
     const handleDelete = async () => {
         try {
@@ -37,6 +37,8 @@ const EditDeleteDropdown = (props) => {
         }
       };
 
+      
+
     return (
     <Dropdown className={`${reviewStyles.reviewEdit} ml-auto mr-2`} drop="left">
         <Dropdown.Toggle as={Ellipsis}
@@ -48,7 +50,7 @@ const EditDeleteDropdown = (props) => {
         >
         <Dropdown.Item
             className={reviewStyles.reviewEdit}
-            // onClick={handleEdit}
+            onClick={() => toggle()}
             aria-label="edit review"
         >
             <i className="fa-solid fa-pencil"/>

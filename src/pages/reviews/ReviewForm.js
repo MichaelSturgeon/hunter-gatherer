@@ -7,6 +7,12 @@ import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 
 const ReviewForm = (props) => {
     const { prodId, setProduct, setReviews } = props;
+    
+    const [formToggle, setFormToggle] = useState(false)
+    const toggle = () => {
+        setFormToggle(!formToggle);        
+    }
+
     const currentUser = useCurrentUser();
 
     const [reviewData, setReviewData] = useState({
@@ -44,16 +50,12 @@ const ReviewForm = (props) => {
             ...prevReviews, 
             results: [newReview, ...prevReviews.results],
             }));
-        
+
+            toggle();
         } catch (error) {
             setErrors(error.response?.data);   
         }        
     };
-    
-    const [formToggle, setFormToggle] = useState(false)
-    const toggle = () => {
-        setFormToggle(!formToggle);        
-    }
     
   return (
             
