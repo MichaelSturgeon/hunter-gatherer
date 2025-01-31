@@ -3,6 +3,7 @@ import { axiosReq } from '../../api/axiosDefaults';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { Card, Row, Col, Spinner } from 'react-bootstrap';
 import appStyles from "../../App.module.css";
+import listStyles from "../../styles/ProductList.module.css"
 import ProductRating from '../../components/ProductRating';
 
 const ProductList = () => {
@@ -24,31 +25,32 @@ const ProductList = () => {
 
 
   return (
-    <Row xs={12}>
-      <Col className="my-auto py-2 p-md-2" lg={3}>
+    <Row  className="d-flex flex-wrap p-1">      
         <h1 className="d-none">Board Games</h1>
         {products.results.length? (
           products.results.map((product) => (
-            <Card key={product.id} className={`${appStyles.Content} mb-3`}>
-              <Link to={`/products/boardgames/${product.id}`}>
-                <Card.Img variant="top" src={product.product_image} alt={product.image_alt} />
+          <Col key={product.id} xs={6} sm={6} md={4} lg={3} className="mb-1 p-1 d-flex flex-column">
+            <Card  className={`${appStyles.Content} ${listStyles.Card} p-2 d-flex flex-column`}>
+              <Link to={`/products/boardgames/${product.id}`} >
+                <Card.Img variant="top" src={product.product_image} alt={product.image_alt} className={listStyles.img}/>
               </Link>
-              <Card.Body>
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Text>
+              <Card.Body className={`${listStyles.body} p-0`}>
+                <Card.Title className="mb-0">{product.name}</Card.Title>
+                <Card.Text className="mb-0">
                   <ProductRating id={product.id} reviewsCount={product.reviews_count}/>
                 </Card.Text>
-                <Card.Text>£{product.price}</Card.Text>
-                <small className="text-muted">Last Updated: {product.updated_at}</small> 
+                <Card.Text className="mb-0">£{product.price}</Card.Text >
+                <small className="text-muted">Updated: {product.updated_at}</small> 
               </Card.Body>  
             </Card>
+          </Col>
           ))
         ) : (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
           </Spinner>
         )}
-      </Col>
+      
     </Row>    
   )
 }

@@ -1,0 +1,13 @@
+.Card {
+    height: 100%;
+  }
+ 
+.img {
+    object-fit: cover;
+    height: 180px;
+    width: 100%;
+}
+
+.body {
+    align-content: end;
+}

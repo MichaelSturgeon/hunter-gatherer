@@ -52,7 +52,7 @@ const ProductDetail = () => {
                     <ProductRating id={product.id} reviewsCount={product.reviews_count}/>
                   </Card.Text>
                   <Card.Text>£{product.price}</Card.Text>
-                  <small className="text-muted">Last Updated: {product.updated_at} </small>
+                  <small className="text-muted">Updated: {product.updated_at} </small>
                 </Card.Body>                
             </Container>
             <ReviewsList prodId={product.id} reviews={reviews} setReviews={setReviews} setProduct={setProduct}/>
