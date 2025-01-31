@@ -12,10 +12,12 @@ const ReviewsList = (props) => {
   const currentUser = useCurrentUser() 
   const { prodId, reviews, setReviews, setProduct } = props;
 
-  const [editFormToggle, setEditFormToggle] = useState(false)
-    const toggle = () => {
-    setEditFormToggle(!editFormToggle);        
-    }
+
+
+  const [editingReviewId, setEditingReviewId] = useState(null);  
+  const toggle = (reviewId) => {
+    setEditingReviewId(editingReviewId === reviewId ? null : reviewId);
+  };
     
   return (
 
@@ -27,7 +29,7 @@ const ReviewsList = (props) => {
                 <Card key={review.id} className="border-0">
                     {currentUser?.username === review.owner && (
                     <EditDeleteDropdown 
-                    revId={review.id} 
+                    reviewId={review.id} 
                     setReviews={setReviews} 
                     setProduct={setProduct}
                     toggle={toggle}
@@ -55,10 +57,12 @@ const ReviewsList = (props) => {
                         <small className="text-muted">Created: {review.created_at}</small>                    
                     </Card.Body>                
 
-                {editFormToggle && <ReviewEditForm
-                toggle={toggle}
-                review={review}
-                />}
+                    {editingReviewId === review.id && (
+                      <ReviewEditForm                       
+                      review={review}
+                      toggle={toggle}
+                      />
+                    )}
               </Card>
             ))}          
             

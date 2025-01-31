@@ -43,6 +43,7 @@ const ReviewEditForm = (props) => {
                     
                     </Form.Group>                
                     <Button  onClick={() => toggle()} type="button">Close Form</Button>
+
                     <Button type="submit">
                         Submit
                     </Button>

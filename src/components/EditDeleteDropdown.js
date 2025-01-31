@@ -16,11 +16,11 @@ const Ellipsis = React.forwardRef(({ onClick }, ref) => (
 ));
 
 const EditDeleteDropdown = (props) => {    
-    const { revId, setReviews, setProduct, toggle } = props;
+    const { reviewId, setReviews, setProduct, toggle } = props;
 
     const handleDelete = async () => {
         try {
-          await axiosRes.delete(`/reviews/${revId}/`);
+          await axiosRes.delete(`/reviews/${reviewId}/`);
           
           setProduct((prevProduct) => ({
             results: [{
@@ -31,7 +31,7 @@ const EditDeleteDropdown = (props) => {
     
           setReviews((prevReviews) => ({
             ...prevReviews,
-            results: prevReviews.results.filter((review) => review.id !== revId),
+            results: prevReviews.results.filter((review) => review.id !== reviewId),
           }));
         } catch (error) {            
         }
@@ -50,7 +50,7 @@ const EditDeleteDropdown = (props) => {
         >
         <Dropdown.Item
             className={reviewStyles.reviewEdit}
-            onClick={() => toggle()}
+            onClick={() => toggle(reviewId)}
             aria-label="edit review"
         >
             <i className="fa-solid fa-pencil"/>
