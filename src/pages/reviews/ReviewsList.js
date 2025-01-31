@@ -63,6 +63,7 @@ const ReviewsList = (props) => {
                       toggle={toggle}
                       />
                     )}
+                    <hr className='m-1'></hr>
               </Card>
             ))}          
             

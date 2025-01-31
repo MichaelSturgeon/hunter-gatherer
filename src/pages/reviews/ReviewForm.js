@@ -76,7 +76,7 @@ const ReviewForm = (props) => {
                     <Form.Group controlId="content">
                         <Form.Label className="d-none">Rating</Form.Label>
                         <Form.Control                    
-                            className={`${reviewStyles.Input}`}
+                            className={reviewStyles.Input}
                             size='lg'                       
                             as="select"                   
                             name="rating"

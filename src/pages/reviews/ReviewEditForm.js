@@ -1,5 +1,6 @@
 import React from 'react'
 import { Button, Card, Form } from 'react-bootstrap';
+import reviewStyles from '../../styles/Reviews.module.css'
 
 const ReviewEditForm = (props) => {
     const { toggle } = props;
@@ -12,7 +13,8 @@ const ReviewEditForm = (props) => {
                 >
                     <Form.Group controlId="content">
                         <Form.Label className="d-none">Rating</Form.Label>
-                        <Form.Control 
+                        <Form.Control
+                            className={reviewStyles.Input}
                             size='lg'                       
                             as="select"                   
                             name="rating"
@@ -32,7 +34,8 @@ const ReviewEditForm = (props) => {
 
                     <Form.Group controlId="content">
                         <Form.Label className="d-none">Review Content</Form.Label>
-                        <Form.Control                        
+                        <Form.Control
+                            className={reviewStyles.Input}                       
                             as="textarea"
                             rows={5}
                             placeholder="What should customers know?"
@@ -42,10 +45,10 @@ const ReviewEditForm = (props) => {
                         />
                     
                     </Form.Group>                
-                    <Button  onClick={() => toggle()} type="button">Close Form</Button>
+                    <Button  onClick={() => toggle()} type="button" className={`${reviewStyles.editFormButton} mr-2 `}>Cancel</Button>
 
-                    <Button type="submit">
-                        Submit
+                    <Button type="submit" className={reviewStyles.editFormButton}>
+                        Save
                     </Button>
                     
                 </Form>

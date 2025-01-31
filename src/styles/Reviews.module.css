@@ -36,22 +36,26 @@
     font-size: 16px;
   }
  
-  .Button:hover {
+  .Button:hover,
+  .editFormButton:hover {
     background-color: #bc1142;
     opacity: 0.8;
     border-color: transparent;
     cursor: pointer;    
   }
 
-  .Button:hover:active {
+  .Button:hover:active,
+  .editFormButton:active {
     background-color: #bc1142 !important;
   }
   
-  .Button:active {
+  .Button:active,
+  .editFormButton:active {
     background-color: #bc1142 !important;
   }
   
-  .Button:focus {
+  .Button:focus,
+  .editFormButton:focus {
     background-color: #bc1142;
   }
 
@@ -69,4 +73,13 @@
     background-color: #ffffff;
     color: #252525;
     cursor: pointer;    
+  }
+
+  .editFormButton {
+    background-color: #bc1142;
+    align-self: center;
+    border-radius: 100px;
+    border-color: transparent;
+    padding: 4px 10px;
+    margin-bottom: 16px;
   }
