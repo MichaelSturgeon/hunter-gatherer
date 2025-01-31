@@ -58,9 +58,11 @@ const ReviewsList = (props) => {
                     </Card.Body>                
 
                     {editingReviewId === review.id && (
-                      <ReviewEditForm                       
+                      <ReviewEditForm
+                      setReviews={setReviews}                      
                       review={review}
                       toggle={toggle}
+                      prodId={prodId}
                       />
                     )}
                     <hr className='m-1'></hr>
