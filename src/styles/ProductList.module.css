@@ -11,3 +11,51 @@
 .body {
     align-content: end;
 }
+
+.Button {    
+    background-color: #bc1142;
+    color: #ffffff;
+    align-self: center;
+    border-radius: 100px;
+    border-color: transparent;
+    padding: 4px 10px;
+    margin-bottom: 16px;      
+}
+
+.Button i {
+    color: #ffffff;
+}
+
+.Button:hover{
+    background-color: #bc1142;
+    opacity: 0.8;
+    border-color: transparent;
+    cursor: pointer;    
+  }
+
+  .Button:hover:active{
+    background-color: #bc1142 !important;
+  }
+  
+  .Button:active{
+    background-color: #bc1142 !important;
+  }
+  
+  .Button:focus{
+    background-color: #bc1142;
+  }
+
+  .modalToggle {
+    padding: 1px 12px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+
+  .Modal {
+    top: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
