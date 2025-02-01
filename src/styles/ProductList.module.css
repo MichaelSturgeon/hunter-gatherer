@@ -1,6 +1,6 @@
 .Card {
     height: 100%;
-  }
+}
  
 .img {
     object-fit: cover;
@@ -27,35 +27,48 @@
 }
 
 .Button:hover{
-    background-color: #bc1142;
-    opacity: 0.8;
-    border-color: transparent;
-    cursor: pointer;    
-  }
+  background-color: #bc1142;
+  opacity: 0.8;
+  border-color: transparent;
+  cursor: pointer;    
+}
 
-  .Button:hover:active{
-    background-color: #bc1142 !important;
-  }
-  
-  .Button:active{
-    background-color: #bc1142 !important;
-  }
-  
-  .Button:focus{
-    background-color: #bc1142;
-  }
+.Button:hover:active{
+  background-color: #bc1142 !important;
+}
 
-  .modalToggle {
-    padding: 1px 12px;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-  }
+.Button:active{
+  background-color: #bc1142 !important;
+}
 
-  .Modal {
-    top: 150px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 1000;
-  }
+.Button:focus{
+  background-color: #bc1142;
+}
+
+.modalToggle {    
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+.compareIcon {
+  align-self:normal;
+  right: 2px;
+  top: 2px;
+  padding: 1px 3px;
+}
+
+.Modal {
+  width: 100%;
+  margin: auto;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+
+.modalBody {  
+  max-height: 80vh;
+  overflow-y:auto;
+  scrollbar-width:none;
+}

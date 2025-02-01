@@ -48,19 +48,15 @@ const ProductList = () => {
           {products.results.map((product) => (
           <Col key={product.id} xs={6} sm={6} md={4} lg={3} className="mb-1 p-1 d-flex flex-column">
             <Card  className={`${appStyles.Content} ${listStyles.Card} p-2 d-flex flex-column position-relative`}>
-
             {modalProducts.some((modalProduct) => modalProduct.id === product.id) ? (
-              <span className='position-absolute'>
-                <i className="fa-solid fa-check"></i>
-              </span>
-              
+              <span className={`${listStyles.Button} ${listStyles.compareIcon} position-absolute m-0`}>
+                <i className="fa-solid fa-check p-0"></i>
+              </span>              
             ) : (
-              <Button onClick={() => addToModal(product)} className='position-absolute'>
-                <i className="fa-solid fa-eye p-0"></i>
+              <Button onClick={() => addToModal(product)} className={`${listStyles.Button} ${listStyles.compareIcon} position-absolute m-0`}>
+                <i class="fa-solid fa-plus p-0"></i>
               </Button>
             )}
-            
-
               <Link to={`/products/boardgames/${product.id}`} >
                 <Card.Img variant="top" src={product.product_image} alt={product.image_alt} className={listStyles.img}/>
               </Link>
@@ -75,29 +71,34 @@ const ProductList = () => {
             </Card>
           </Col>
           ))}
-
+        
+        
           {modalToggle && (
-          <Modal.Dialog className={`${listStyles.Modal} position-fixed`}>            
-              <h2>Compare</h2>
-            <Modal.Body>                 
-              <p>image</p>
-              <p>name</p>
-              <p>rating</p>
-              <p>price</p>
-              <p>description</p>
-              <Button variant="primary" className={listStyles.Button}>clear</Button>
-            </Modal.Body>
-               
+          <Modal.Dialog className={`${listStyles.Modal} position-fixed`}> 
+            <Modal.Body className={listStyles.modalBody}>
+             <Row className="g-2">
+              {modalProducts.map((product) => (
+              <Col key={product.id} xs={6} className='p-1'>
+                  <img src={product.product_image} alt={product.image_alt} className={listStyles.img} />
+                  <p>{product.name}</p>
+                  <ProductRating id={product.id} reviewsCount={product.reviews_count} />
+                  <p>£{product.price}</p>
+                  <p>{product.description}</p>
+                </Col>
+              ))}
+              </Row>             
+            </Modal.Body>               
           </Modal.Dialog>
         )}
           
-          {modalProducts.length === 2 && <Button           
-           onClick={toggle}
-           className={`${listStyles.Button} ${listStyles.modalToggle} position-fixed m-0`}>
-            <i className="fa-solid fa-eye p-0"></i>
-          </Button>
+          {modalProducts.length === 2 && 
+          <Button 
+          onClick={toggle} 
+          className={`${listStyles.Button} ${listStyles.modalToggle} position-fixed m-0`}>
+              {modalToggle === true? 'Close' : 'Compare' }              
+            </Button>
           }
-        </> 
+      </>
         ) : (
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
