@@ -98,7 +98,14 @@ const ProductList = () => {
                   <p className='mb-0 mt-1'><b>{product.name}</b></p>
                   <ProductRating id={product.id} reviewsCount={product.reviews_count} />
                   <p>£{product.price}</p>
-                  <p>{product.description}</p>
+                  <p>
+                  {product.description.split('  ').map((line, index) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                  </p>
                 </Col>
               ))}
               </Row>             

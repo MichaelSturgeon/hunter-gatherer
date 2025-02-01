@@ -42,17 +42,30 @@ const ProductDetail = () => {
                   alt={product.image_alt }
                   className={detailStyles.img}
                   />                           
-            </Container>
-            
+            </Container>            
             <Container className={`${appStyles.Content} mb-2`}>
                 <Card.Title className={detailStyles.Header}>{product.name}</Card.Title>
                 <Card.Body className="pb-0">
-                  <Card.Text>{product.description}</Card.Text>
                   <Card.Text>
                     <ProductRating id={product.id} reviewsCount={product.reviews_count}/>
                   </Card.Text>
-                  <Card.Text>£{product.price}</Card.Text>
-                  <small className="text-muted">Updated: {product.updated_at} </small>
+                  <Card.Text>
+                    <a href={product.website} target="_blank" rel="noopener noreferrer">
+                      £{product.price} - Visit the official website
+                    </a>
+                  </Card.Text>
+                  
+                  <Card.Text>
+                  {product.description.split('  ').map((line, index) => (
+                    <React.Fragment key={index}>
+                      {line}
+                      <br />
+                    </React.Fragment>
+                  ))}
+                  </Card.Text>
+
+
+                  <small className="text-muted">Updated: {product.updated_at}</small>
                 </Card.Body>                
             </Container>
             <ReviewsList prodId={product.id} reviews={reviews} setReviews={setReviews} setProduct={setProduct}/>

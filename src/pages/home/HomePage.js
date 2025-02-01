@@ -19,7 +19,7 @@ const HomePage = () => {
           <Link to="/products/boardgames" >
           <Button className={homePageStyle.Button} variant="link"><i class="fa-solid fa-dice"></i><span>Board Games</span></Button>
           </Link>
-          <Link >
+          <Link to="/more" >
           <Button className={homePageStyle.Button} variant="link"><i class="fa-regular fa-square-plus"></i><span>More</span></Button>
           </Link>                     
         </Container>    
