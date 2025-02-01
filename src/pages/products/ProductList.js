@@ -95,7 +95,7 @@ const ProductList = () => {
               {modalProducts.map((product) => (
               <Col key={product.id} xs={6} className='p-1'>
                   <img src={product.product_image} alt={product.image_alt} className={listStyles.img} />
-                  <p>{product.name}</p>
+                  <p className='mb-0 mt-1'><b>{product.name}</b></p>
                   <ProductRating id={product.id} reviewsCount={product.reviews_count} />
                   <p>£{product.price}</p>
                   <p>{product.description}</p>
