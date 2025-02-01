@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { axiosReq } from '../../api/axiosDefaults';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
-import { Card, Row, Col, Spinner, Button, Modal } from 'react-bootstrap';
+import { Card, Row, Col, Spinner, Button, Modal, Alert } from 'react-bootstrap';
 import appStyles from "../../App.module.css";
 import listStyles from "../../styles/ProductList.module.css"
 import ProductRating from '../../components/ProductRating';
@@ -10,9 +10,12 @@ import ProductRating from '../../components/ProductRating';
 const ProductList = () => {
   const [products, setProducts] = useState({ results: [] });
 
+  const [hideAlert, setHideAlert] = useState(false);
+
   const [modalToggle, setModalToggle] = useState(false)
   const toggle = () => {
     setModalToggle(!modalToggle)
+    setHideAlert(true)
   }
 
   const [modalProducts, setModalProducts] = useState([]);  
@@ -41,7 +44,19 @@ const ProductList = () => {
 
 
   return (
-    <Row  className="d-flex flex-wrap p-1 position-relative">    
+    <Row  className="d-flex flex-wrap p-1 position-relative">
+      {!hideAlert && products.results.length > 0 && (
+      <Alert variant="success" className='m-0 p-2'>
+        <Alert.Heading className='m-0'>Ahh! You made it!</Alert.Heading >
+        <p className='m-0'>
+        To get started, click the '+' icon located in the corner of a 
+        product card to add it to the comparison. Next, choose another 
+        product you wish to compare it with. Once you've selected two products 
+        the 'Compare' button appears.
+        </p>
+      </Alert>
+      )}
+
         <h1 className="d-none">Board Games</h1>
         {products.results.length? (
           <>
@@ -93,7 +108,7 @@ const ProductList = () => {
           
           {modalProducts.length === 2 && 
           <Button 
-          onClick={toggle} 
+          onClick={toggle}
           className={`${listStyles.Button} ${listStyles.modalToggle} position-fixed m-0`}>
               {modalToggle === true? 'Close' : 'Compare' }              
             </Button>
