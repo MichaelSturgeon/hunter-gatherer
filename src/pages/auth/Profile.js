@@ -2,14 +2,20 @@ import React, { useEffect, useState } from 'react'
 import appStyles from '../../App.module.css'
 import signUpStyles from '../../styles/SignInUpForm.module.css'
 import profileStyles from '../../styles/Profile.module.css'
-import { Col, Container, Row, Spinner, Image, Form, Button } from 'react-bootstrap'
-import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
-import { axiosReq } from '../../api/axiosDefaults'
+import { Col, Container, Row, Spinner, Image, Form, Button, Alert } from 'react-bootstrap'
+import { useHistory, useParams } from 'react-router-dom/cjs/react-router-dom.min'
+import { axiosReq, axiosRes } from '../../api/axiosDefaults'
+import { useCurrentUser, useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 const Profile = () => {
     const {id} = useParams();
-
+    const currentUser = useCurrentUser();
+    const setCurrentUser = useSetCurrentUser();
+    const [errors, setErrors] = useState({});
+    const history = useHistory();
     const [profile, setProfile] = useState([]);
+
+    const [username, setUsername] = useState("");
 
     useEffect(() => {
         const fetchData = async () => {
@@ -21,7 +27,31 @@ const Profile = () => {
             }
         }
         fetchData();
-    }, [id, setProfile]);  
+    }, [id, setProfile]);
+    
+    useEffect(() => {
+        if (currentUser?.profile_id?.toString() === id) {
+          setUsername(currentUser.username);
+        } else {
+          history.push("/");
+        }
+      }, [currentUser, history, id]);
+    
+    const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+        await axiosRes.put("/dj-rest-auth/user/", {
+        username,
+        });
+        setCurrentUser((prevUser) => ({
+        ...prevUser,
+        username,
+        }));
+      history.goBack();
+    } catch (error) {        
+        setErrors(error.response?.data);
+    }
+    };
 
   return (
     <Row >
@@ -40,7 +70,7 @@ const Profile = () => {
                 <Container className={`${appStyles.Content} mt-2`}>
 
                     <Form 
-                        // onSubmit={handleSubmit}
+                        onSubmit={handleSubmit}
                         >
 
                         <Form.Group>
@@ -68,10 +98,16 @@ const Profile = () => {
                             type="text" 
                             placeholder="Update username"
                             name="username"
-                            // value={username}
-                            // onChange={handleChange}
-                            />                    
-                        </Form.Group>                                      
+                            value={username}
+                            onChange={(event) => setUsername(event.target.value)}
+                            />
+                            {errors?.username?.map((message, idx) => (
+                            <Alert key={idx} variant="warning">
+                                {message}
+                            </Alert>
+                            ))}                    
+                        </Form.Group>
+                                                             
 
                         <Form.Group controlId="password">
                             <Form.Label className="d-none">Password</Form.Label>
@@ -80,7 +116,7 @@ const Profile = () => {
                             type="password" 
                             placeholder="Update password" 
                             name="password"
-                            // value={password1}
+                            // value={password}
                             // onChange={handleChange}
                             />
                         </Form.Group>
