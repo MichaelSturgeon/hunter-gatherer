@@ -9,6 +9,7 @@ import HomePage from './pages/home/HomePage';
 import NotFound from './pages/help/NotFound';
 import ProductList from './pages/products/ProductList';
 import ProductDetail from './pages/products/ProductDetail';
+import Profile from './pages/auth/Profile';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route exact path='/products/boardgames/:id' render={() => <ProductDetail/>} />        
           <Route exact path='/login' render={() => <SignInForm/>} />
           <Route exact path='/register' render={() => <SignUpForm/>} />
+          <Route exact path='/profiles/:id' render={() => <Profile/>} />
           <Route render={() => <NotFound/>} />
         </Switch>
       </Container>
