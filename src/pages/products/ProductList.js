@@ -5,6 +5,8 @@ import { Card, Row, Col, Spinner, Button, Modal, Alert } from 'react-bootstrap';
 import appStyles from "../../App.module.css";
 import listStyles from "../../styles/ProductList.module.css"
 import ProductRating from '../../components/ProductRating';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { fetchMoreData } from '../../utils/utils';
 
 
 const ProductList = () => {
@@ -45,6 +47,7 @@ const ProductList = () => {
 
   return (
     <Row  className="d-flex flex-wrap p-1 position-relative">
+      <h1 className="d-none">Board Games</h1>
       {!hideAlert && products.results.length > 0 && (
       <Alert variant="success" className='m-0 p-2'>
         <Alert.Heading className='m-0'>Ahh! You made it!</Alert.Heading >
@@ -56,10 +59,13 @@ const ProductList = () => {
         </p>
       </Alert>
       )}
-
-        <h1 className="d-none">Board Games</h1>
-        {products.results.length? (
-          <>
+      {products.results.length? (
+      <>
+        <InfiniteScroll        
+        dataLength={products.results.length}        
+        hasMore={!!products.next}
+        next={() => fetchMoreData(products, setProducts)}
+        ><Row className='m-0 p-0'>
           {products.results.map((product) => (
           <Col key={product.id} xs={6} sm={6} md={4} lg={3} className="mb-1 p-1 d-flex flex-column">
             <Card  className={`${appStyles.Content} ${listStyles.Card} p-2 d-flex flex-column position-relative`}>
@@ -86,9 +92,10 @@ const ProductList = () => {
             </Card>
           </Col>
           ))}
-        
-        
-          {modalToggle && (
+          </Row>
+        </InfiniteScroll>
+
+        {modalToggle && (
           <Modal.Dialog className={`${listStyles.Modal} position-fixed`}> 
             <Modal.Body className={listStyles.modalBody}>
              <Row className="g-2">
