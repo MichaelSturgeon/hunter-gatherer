@@ -1,85 +1,85 @@
 .cardHeader {
-    background-color: #ffffff;
-    align-items: end;
+  background-color: #ffffff;
+  align-items: end;
 }
 
 .avatar {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .username {
-    text-transform: capitalize;
-    padding: 5px;
-    margin: 0;
+  text-transform: capitalize;
+  padding: 5px;
+  margin: 0;
 }
 
 .Button {
-    background-color: #bc1142;
-    align-self: center;
-    border-radius: 100px;
-    border-color: transparent;
-    padding: 4px 10px;
-    margin-bottom: 16px;    
-    width: 100%;
-  }
+  background-color: #bc1142;
+  align-self: center;
+  border-radius: 100px;
+  border-color: transparent;
+  padding: 4px 10px;
+  margin-bottom: 16px;    
+  width: 100%;
+}
 
-  .Input {
-    background: #ffffff;
-    border: 1px solid #dadadf;
-    box-sizing: border-box;
-    border-radius:10px;
-    color: #252525;
-    padding: 10px;
-    font-size: 16px;
-  }
+.Input {
+  background: #ffffff;
+  border: 1px solid #dadadf;
+  box-sizing: border-box;
+  border-radius:10px;
+  color: #252525;
+  padding: 10px;
+  font-size: 16px;
+}
  
-  .Button:hover,
-  .editFormButton:hover {
-    background-color: #bc1142;
-    opacity: 0.8;
-    border-color: transparent;
-    cursor: pointer;    
-  }
+.Button:hover,
+.editFormButton:hover {
+  background-color: #bc1142;
+  opacity: 0.8;
+  border-color: transparent;
+  cursor: pointer;    
+}
 
-  .Button:hover:active,
-  .editFormButton:active {
-    background-color: #bc1142 !important;
-  }
-  
-  .Button:active,
-  .editFormButton:active {
-    background-color: #bc1142 !important;
-  }
-  
-  .Button:focus,
-  .editFormButton:focus {
-    background-color: #bc1142;
-  }
+.Button:hover:active,
+.editFormButton:active {
+  background-color: #bc1142 !important;
+}
 
-  .formClose,
-  .reviewEdit {
-    background-color: #ffffff;
-    color: #BFC0C0;
-    border: none;
-    padding: 0;
-    cursor: pointer;
-  }
+.Button:active,
+.editFormButton:active {
+  background-color: #bc1142 !important;
+}
 
-  .formClose:hover,
-  .reviewEdit:hover {
-    background-color: #ffffff;
-    color: #252525;
-    cursor: pointer;    
-  }
+.Button:focus,
+.editFormButton:focus {
+  background-color: #bc1142;
+}
 
-  .editFormButton {
-    background-color: #bc1142;
-    align-self: center;
-    border-radius: 100px;
-    border-color: transparent;
-    padding: 4px 10px;
-    margin-bottom: 16px;
-  }
+.formClose,
+.reviewEdit {
+  background-color: #ffffff;
+  color: #BFC0C0;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.formClose:hover,
+.reviewEdit:hover {
+  background-color: #ffffff;
+  color: #252525;
+  cursor: pointer;    
+}
+
+.editFormButton {
+  background-color: #bc1142;
+  align-self: center;
+  border-radius: 100px;
+  border-color: transparent;
+  padding: 4px 10px;
+  margin-bottom: 16px;
+}

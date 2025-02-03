@@ -1,9 +1,10 @@
+// Imports
 import React from 'react'
 import { Button, Col, Container, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import appStyles from "../../App.module.css";
 import notFoundStyles from "../../styles/NotFound.module.css";
-
+// Define NotFound functional component
 const NotFound = () => {
   return (
     <Row className={notFoundStyles.Row}>
@@ -11,6 +12,7 @@ const NotFound = () => {
         <Container className={`${appStyles.Content} p-4`}>
           <h1 className={notFoundStyles.Header}>404 Page Not Found</h1>
           <p className={notFoundStyles.paragraph}>Hmm... I can't seem to find this page! Could you check if I accidentally left it at home?</p>
+          {/* Button to take the user back to the homepage */}
           <Link to="/">
             <Button className={notFoundStyles.Button}>Home</Button>                     
           </Link>

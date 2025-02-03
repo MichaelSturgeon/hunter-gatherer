@@ -1,3 +1,4 @@
+// Imports
 import React, { useEffect, useState } from 'react'
 import { axiosReq } from '../../api/axiosDefaults';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
@@ -8,19 +9,17 @@ import ProductRating from '../../components/ProductRating';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { fetchMoreData } from '../../utils/utils';
 
-
 const ProductList = () => {
+  // State hooks to manage products, modal, and alert visibility
   const [products, setProducts] = useState({ results: [] });
-
   const [hideAlert, setHideAlert] = useState(false);
-
+  const [modalProducts, setModalProducts] = useState([]);
   const [modalToggle, setModalToggle] = useState(false)
   const toggle = () => {
     setModalToggle(!modalToggle)
     setHideAlert(true)
-  }
-
-  const [modalProducts, setModalProducts] = useState([]);  
+  };
+  // Function to add products to the modal (up to 2 products)  
   const addToModal = (product) => {
     setModalProducts((prevProducts) => {
       if (prevProducts.length === 2) {
@@ -29,21 +28,18 @@ const ProductList = () => {
       return [...prevProducts, product];
     });
   };
-  
-  
+  // useEffect hook to fetch products when the component mounts
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const { data } = await axiosReq.get(`/products/`);
-        setProducts(data);
-        
+        // Set the products data in state
+        setProducts(data);        
       } catch (error) {        
       }
-    };
-    
+    };    
     fetchProducts();
   }, []);
-
 
   return (
     <Row  className="d-flex flex-wrap p-1 position-relative">
@@ -59,8 +55,10 @@ const ProductList = () => {
         </p>
       </Alert>
       )}
+      {/* Check if products are available */}
       {products.results.length? (
       <>
+      {/* InfiniteScroll component to load more products as the user scrolls */}
         <InfiniteScroll        
         dataLength={products.results.length}        
         hasMore={!!products.next}
@@ -94,7 +92,7 @@ const ProductList = () => {
           ))}
           </Row>
         </InfiniteScroll>
-
+        {/* Modal to show the selected products for comparison */}
         {modalToggle && (
           <Modal.Dialog className={`${listStyles.Modal} position-fixed`}> 
             <Modal.Body className={listStyles.modalBody}>
@@ -119,7 +117,7 @@ const ProductList = () => {
             </Modal.Body>               
           </Modal.Dialog>
         )}
-          
+          {/* If two products are selected for comparison, show the compare button */}
           {modalProducts.length === 2 && 
           <Button 
           onClick={toggle}
@@ -129,6 +127,7 @@ const ProductList = () => {
           }
       </>
         ) : (
+          // Show a loading spinner if products are still being loaded
           <Spinner animation="border" role="status">
             <span className="sr-only">Loading...</span>
           </Spinner>

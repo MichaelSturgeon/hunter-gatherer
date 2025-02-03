@@ -1,10 +1,9 @@
+// Imports
 import { useEffect, useRef, useState } from "react";
-
 // Custom hook to toggle a state when clicking outside of an element
 const useClickOutsideToggle = () => {  
   const [expanded, setExpanded] = useState(false);
   const ref = useRef(null);
-
   useEffect(() => {
     // Collapse the element if clicked outside    
     const handleClickOutside = (event) => {      
@@ -12,7 +11,6 @@ const useClickOutsideToggle = () => {
         setExpanded(false); 
       }
     };
-
     // Add event listener when the component mounts
     document.addEventListener("mouseup", handleClickOutside);
     return () => {

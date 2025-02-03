@@ -1,3 +1,4 @@
+// Imports
 import React, { useEffect, useRef, useState } from 'react'
 import appStyles from '../../App.module.css'
 import signUpStyles from '../../styles/SignInUpForm.module.css'
@@ -13,7 +14,6 @@ const Profile = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();    
     const history = useHistory();
-
     // States for profile data, username, password, image, and errors
     const [profile, setProfile] = useState(null);
     const [username, setUsername] = useState('');    
@@ -25,8 +25,7 @@ const Profile = () => {
     const [profileImage, setProfileImage] = useState('');
     const [errors, setErrors] = useState({});
     // Ref for image file input
-    const imageFile = useRef();
-    
+    const imageFile = useRef();    
     // Fetch profile data when the component mounts or the `id` changes
     useEffect(() => {
         const fetchData = async () => {
@@ -37,8 +36,7 @@ const Profile = () => {
             }
         }
         fetchData();
-    }, [id, setProfile]);
-    
+    }, [id, setProfile]);    
     // Handle username change for the current user
     useEffect(() => {
         if (currentUser?.profile_id?.toString() === id) {
@@ -46,8 +44,7 @@ const Profile = () => {
         } else {
           history.push("/");
         }
-      }, [currentUser, history, id]);
-    
+      }, [currentUser, history, id]);    
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -63,8 +60,6 @@ const Profile = () => {
             setErrors(error.response?.data);
         }
     };
-
-
     // Handle password submission
     const handlePasswordSubmit = async (event) => {
         event.preventDefault();
@@ -76,9 +71,7 @@ const Profile = () => {
         } catch (error) {
             setErrors(error.response?.data);
         }
-    };
-
-    
+    };    
     // Handle image file submission
     const handleImgSubmit = async (event) => {
         event.preventDefault();
@@ -100,8 +93,6 @@ const Profile = () => {
             setErrors(error.response?.data);
         }
     };
- 
-
   return (
     <Row >
         {/* Conditionally render content based on whether profile data is loaded */}

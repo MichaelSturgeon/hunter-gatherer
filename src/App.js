@@ -1,3 +1,5 @@
+// Imports
+import React from 'react';
 import appStyles from './App.module.css';
 import NavBar from './components/NavBar';
 import { Container } from 'react-bootstrap';
@@ -10,15 +12,14 @@ import NotFound from './pages/help/NotFound';
 import ProductList from './pages/products/ProductList';
 import ProductDetail from './pages/products/ProductDetail';
 import Profile from './pages/auth/Profile';
-
-
-function App() {
-  
+// The main App component
+function App() {  
   return (
     <div className={appStyles.App}>
       <NavBar/>
       <Container className={appStyles.Main}>
         <Switch>
+          {/* Defining different routes for the app */}
           <Route exact path='/' render={() => <HomePage/>} />        
           <Route exact path='/products/boardgames' render={() => <ProductList/>} />        
           <Route exact path='/products/boardgames/:id' render={() => <ProductDetail/>} />        
