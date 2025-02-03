@@ -55,7 +55,7 @@ const SignUpForm = () => {
                     onChange={handleChange}/>                    
                 </Form.Group>
                 {/* Display errors related to username if any */}
-                {errors.username?.map((message, idx) =>
+                {errors?.username?.map((message, idx) =>
                   <Alert variant='warning' key={idx}>{message}</Alert>
                 )}               
                 {/* Password input field */}
@@ -70,7 +70,7 @@ const SignUpForm = () => {
                     onChange={handleChange}/>
                 </Form.Group>
                  {/* Display errors related to password1 if any */}
-                {errors.password1?.map((message, idx) =>
+                {errors?.password1?.map((message, idx) =>
                   <Alert variant='warning' key={idx}>{message}</Alert>
                 )}
                 {/* Password input field */}
@@ -85,7 +85,7 @@ const SignUpForm = () => {
                     onChange={handleChange}/>
                 </Form.Group>
                  {/* Display errors related to password2 if any */}
-                {errors.password2?.map((message, idx) =>
+                {errors?.password2?.map((message, idx) =>
                   <Alert variant='warning' key={idx}>{message}</Alert>
                 )}
                 {/* Submit button for the registration form */}
@@ -93,7 +93,7 @@ const SignUpForm = () => {
                     Register
                 </Button>
                  {/* Display non-field errors if any (e.g., general form errors) */}
-                {errors.non_field_errors?.map((message, idx) =>
+                {errors?.non_field_errors?.map((message, idx) =>
                   <Alert variant='warning' key={idx}>{message}</Alert>
                 )}
             </Form>

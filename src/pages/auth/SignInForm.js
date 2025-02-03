@@ -6,6 +6,7 @@ import signInStyles from "../../styles/SignInUpForm.module.css";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import axios from "axios";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { setTokenTimestamp } from "../../utils/utils";
 // Define SignInForm functional component
 const SignInForm = () => {
   // Get the setCurrentUser function from context to update the logged-in user's state
@@ -33,6 +34,7 @@ const SignInForm = () => {
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
+      setTokenTimestamp(data);
       history.push('/');        
     } catch (error) {
       setErrors(error.response?.data);      
@@ -57,7 +59,7 @@ const SignInForm = () => {
                     onChange={handleChange}/>                    
                 </Form.Group>
                 {/* Display errors related to username if any */}
-                {errors.username?.map((message, idx) =>
+                {errors?.username?.map((message, idx) =>
                   <Alert variant='warning' key={idx}>{message}</Alert>
                 )}               
                 {/* Password input field */}
@@ -72,7 +74,7 @@ const SignInForm = () => {
                     onChange={handleChange}/>
                 </Form.Group>
                 {/* Display errors related to password if any */}
-                {errors.password?.map((message, idx) =>
+                {errors?.password?.map((message, idx) =>
                   <Alert variant='warning' key={idx}>{message}</Alert>
                 )}
                  {/* Submit button for the login form */}
@@ -80,7 +82,7 @@ const SignInForm = () => {
                     Login
                 </Button>
                 {/* Display non-field errors if any (e.g., incorrect credentials) */}
-                {errors.non_field_errors?.map((message, idx) =>
+                {errors?.non_field_errors?.map((message, idx) =>
                   <Alert variant='warning' key={idx}>{message}</Alert>
                 )}
             </Form>

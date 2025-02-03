@@ -73,7 +73,7 @@ const ProductList = () => {
               </span>              
             ) : (
               <Button onClick={() => addToModal(product)} className={`${listStyles.Button} ${listStyles.compareIcon} position-absolute m-0`}>
-                <i class="fa-solid fa-plus p-0"></i>
+                <i className="fa-solid fa-plus p-0"></i>
               </Button>
             )}
               <Link to={`/products/boardgames/${product.id}`} >

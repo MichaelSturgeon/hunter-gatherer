@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom';
 import { useCurrentUser, useSetCurrentUser } from '../contexts/CurrentUserContext';
 import axios from 'axios';
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
+import { removeTokenTimestamp } from '../utils/utils';
 
 const NavBar = () => {
   // Using the custom hook to manage navbar expansion state and reference for outside click
@@ -19,6 +20,7 @@ const NavBar = () => {
       // Sending POST request to log the user out
       await axios.post('dj-rest-auth/logout/');
       setCurrentUser(null);
+      removeTokenTimestamp();
     } catch (error) {      
     }
   };
@@ -53,7 +55,7 @@ return (
     <Navbar expanded={expanded} className={navStyles.NavBar} expand="md" fixed='top'>
         <Container>
             <NavLink exact className={navStyles.NavLink} to='/'>
-                <Navbar.Brand>Hunter<i class="fa-brands fa-raspberry-pi"></i>Gatherer</Navbar.Brand>
+                <Navbar.Brand>Hunter<i className="fa-brands fa-raspberry-pi"></i>Gatherer</Navbar.Brand>
             </NavLink>
                 {/* Navbar toggle button for mobile view */}            
                 <Navbar.Toggle 

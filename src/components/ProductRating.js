@@ -13,16 +13,24 @@ const ProductRating = (props) => {
   .reduce((acc, review) => acc += parseInt(review.rating), 0) / productReviews.length) : 0;
   // useEffect hook to fetch reviews when the component mounts
   useEffect(() => {
+    // Flag to check if component is mounted
+    let isMounted = true;
     const handleMount = async () => {
       try {
         // Fetching all reviews from the API
         const {data: reviews} = await axiosReq.get(`/reviews/`);
         // Setting the reviews data in the state
-        setReviews(reviews);
+        if (isMounted) {
+          setReviews(reviews);
+        }
       } catch (error) {         
       }
     };
     handleMount();
+    // Cleanup on unmount
+    return () => {
+      isMounted = false; 
+    };
   }, []);
     
   return (

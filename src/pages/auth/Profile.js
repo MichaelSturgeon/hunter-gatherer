@@ -102,10 +102,10 @@ const Profile = () => {
                 <Image src={profile.profile_image} alt={profile.owner} className={profileStyles.Img}/>
                 <h1 className={`${signUpStyles.Header} ${profileStyles.username}`}>{profile.owner}</h1>
                 
-                <span className={profileStyles.header}><i class="fa-solid fa-people-group"></i></span>
+                <span className={profileStyles.header}><i className="fa-solid fa-people-group"></i></span>
                 <p className='d-inline-block'>You joined: {profile.created_at}</p>
                 <br/>
-                <span className={profileStyles.header}><i class="fa-solid fa-comments"></i></span>
+                <span className={profileStyles.header}><i className="fa-solid fa-comments"></i></span>
                 <p className='d-inline-block'>Engagement: {profile.reviews_made ? profile.reviews_made : '0'} reviews</p>                                     
                 </Container>  
                 <Container className={`${appStyles.Content} mt-2`}>
