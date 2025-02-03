@@ -14,9 +14,14 @@ const Profile = () => {
     const setCurrentUser = useSetCurrentUser();    
     const history = useHistory();
 
-    // States for profile data, username, image, and errors
+    // States for profile data, username, password, image, and errors
     const [profile, setProfile] = useState(null);
-    const [username, setUsername] = useState('');
+    const [username, setUsername] = useState('');    
+    const [password, setPassword] = useState({
+        new_password1: "",
+        new_password2: "",
+      });
+    const { new_password1, new_password2 } = password;
     const [profileImage, setProfileImage] = useState('');
     const [errors, setErrors] = useState({});
     // Ref for image file input
@@ -54,10 +59,25 @@ const Profile = () => {
             username,
             }));
         history.goBack();
-        } catch (error) {        
+        } catch (error) {       
             setErrors(error.response?.data);
         }
     };
+
+
+    // Handle password submission
+    const handlePasswordSubmit = async (event) => {
+        event.preventDefault();
+        try {
+            await axiosRes.post("/dj-rest-auth/password/change/", {
+            new_password1,
+            new_password2 });
+            history.goBack();
+        } catch (error) {
+            setErrors(error.response?.data);
+        }
+    };
+
     
     // Handle image file submission
     const handleImgSubmit = async (event) => {
@@ -121,8 +141,11 @@ const Profile = () => {
                             ))}
                         </Form.Group>                                            
                         <Button className={signUpStyles.Button} type="submit">
-                            Save Image
-                        </Button>                        
+                            Save Profile Picture
+                        </Button>
+                        {errors?.non_field_errors?.map((message, idx) =>
+                            <Alert variant='warning' key={idx}>{message}</Alert>
+                        )}                                              
                     </Form>
                     <Form 
                         onSubmit={handleSubmit}
@@ -143,27 +166,58 @@ const Profile = () => {
                                 {message}
                             </Alert>
                             ))}                    
-                        </Form.Group>                                                             
+                        </Form.Group>  
+                        <Button className={signUpStyles.Button} type="submit">
+                            Save Username
+                        </Button>
+                        {errors?.non_field_errors?.map((message, idx) =>
+                            <Alert variant='warning' key={idx}>{message}</Alert>
+                        )}                        
+                    </Form>
+                    <Form 
+                        onSubmit={handlePasswordSubmit}
+                        >                                                           
                         {/* Password update form */}
-                        <Form.Group controlId="password">
+                        <Form.Group controlId="new_password1">
                             <Form.Label className="d-none">Password</Form.Label>
                             <Form.Control
                             className={signUpStyles.Input}
                             type="password" 
-                            placeholder="Update password" 
-                            name="password"
-                            // value={password}
-                            // onChange={handleChange}
+                            placeholder="New password" 
+                            name="new_password1"
+                            value={new_password1}
+                            onChange={(event) => setPassword({ ...password, new_password1: event.target.value })}
                             />
+                            {errors?.new_password1?.map((message, idx) => (
+                            <Alert key={idx} variant="warning">
+                                {message}
+                            </Alert>
+                            ))}
                         </Form.Group>
-                                            
+
+                        <Form.Group controlId="new_password2">
+                            <Form.Label className="d-none">Password</Form.Label>
+                            <Form.Control
+                            className={signUpStyles.Input}
+                            type="password" 
+                            placeholder="Confirm password" 
+                            name="new_password2"
+                            value={new_password2}
+                            onChange={(event) => setPassword({ ...password, new_password2: event.target.value })}
+                            />
+                            {errors?.new_password2?.map((message, idx) => (
+                            <Alert key={idx} variant="warning">
+                                {message}
+                            </Alert>
+                            ))}
+                        </Form.Group>                                            
                         <Button className={signUpStyles.Button} type="submit">
-                            Save changes
+                            Save Password
                         </Button>
-                        
+                        {errors?.non_field_errors?.map((message, idx) =>
+                            <Alert variant='warning' key={idx}>{message}</Alert>
+                        )}                        
                     </Form>
-
-
                 </Container>    
             </Col>
         ) : (
