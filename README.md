@@ -8,12 +8,16 @@ Contents
 - [Credits](#credits) 
 - [Acknowledgments](#acknowledgments)
 
+![Am I Responsive](/documentation/amiresponsive%20image.png)
+
 # Overview
 Hunter Gatherer is an innovative and dynamic platform designed specifically to empower consumers in their purchasing decisions. By placing nearly all the decision-making power directly into the hands of users, Hunter Gatherer transforms the shopping experience into one that is both engaging and informative.
 
 With its user-friendly interface, individuals can effortlessly compare a selection of products side by side. Upon launch the site will compare products of one commodity, with the onward capability of expanding to a range of different products. This feature allows users to scrutinize every detail, from specifications and features to pricing and rating, based on customer reviews. By providing comprehensive insights and comparisons, Hunter Gatherer ensures that consumers have all the information they need at their fingertips.
 
 In a world where choices can often be overwhelming, Hunter Gatherer stands out as a reliable ally for consumers, enabling them to take control of their shopping experience. By fostering transparency and accessibility, the platform empowers individuals to make decisions that are right for them, ensuring satisfaction with every purchase. Ultimately, Hunter Gatherer is not just a comparison tool; it is a catalyst for informed consumerism, promoting smarter shopping habits and enhancing overall consumer confidence.
+[Hunter Gatherer deployed project](https://hunter-gatherer-160241007a62.herokuapp.com/)
+
 
 # User Experience Design
 ## Strategy
