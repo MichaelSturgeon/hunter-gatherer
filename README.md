@@ -1,12 +1,12 @@
 Contents
 
-- Overview
-- UX
-- Tools Used
-- Testing
-- Deployment
-- Credits
-- Acknowledgments
+- [Overview](#overview)
+- [UX](#user-experience-design)
+- [Tools Used](#tools-used)
+- [Testing](#testing)
+- [Deployment](#deployment)
+- [Credits](#credits) 
+- [Acknowledgments](#acknowledgments)
 
 # Overview
 Hunter Gatherer is an innovative and dynamic platform designed specifically to empower consumers in their purchasing decisions. By placing nearly all the decision-making power directly into the hands of users, Hunter Gatherer transforms the shopping experience into one that is both engaging and informative.
@@ -25,6 +25,7 @@ From the beginning, I knew it was crucial to outline the strategic objectives of
 Through thorough research, I was able to craft a clear vision that steered the project, guaranteeing that each feature developed met user expectations. Below is a table showcasing user stories along with the criteria that ultimately shaped the project’s development.
 
 ### User Stories
+*Kindly select the dropdown menu to access the user stories associated with the relevant category.*
 
 <details>
 <summary>General</summary>
@@ -87,6 +88,11 @@ Having solidified the strategy, I shifted my focus to defining the project's sco
 
 - User Reviews & Ratings: Important for building trust and aiding in decision-making.
 
+You will find below the imagery of the model relationship and schema that I developed to fulfill the objectives outlined in the scope phase. These illustrations demonstrate the pertinent data fields I require and their interconnections.
+![API Model relationship](/documentation/wireframes/model%20relationship.png)
+![API Schema](/documentation/wireframes/database%20schema.png)
+
+
 ## Structure
 With a well-defined scope in place, I shifted my focus to the project's structural design. This blueprint guaranteed that the site's content was systematically arranged, allowing users to swiftly locate what they needed. The framework for this product emphasized several key elements.
 
@@ -104,7 +110,10 @@ The skeleton plane of the website prioritized its layout and navigation, ensurin
 
 - Responsive Design: Ensuring that the site is easy to use on both mobile devices and desktops, as many users will likely visit from different devices.
 Balsamiq was the go-to tool for creating all the wireframes for this project. Below, you can delve into screenshots of the original project design, which has mostly preserved its essence in the final version, with only a few subtle adjustments made to enhance its visual appeal.
-
+![Home page wireframe](/documentation/wireframes/home%20page.png)
+![Product page wireframe](/documentation/wireframes/product%20list.png)
+![Product detail view wireframe](/documentation/wireframes/product%20detail%20view.png)
+![Product comparison modal wireframe](/documentation/wireframes/comparison%20modal.png)
 
 ## Surface
 As the final layer of the five planes of UXD, the surface plane impacts how the site looks and feels to users. The aesthetics play a major role in user perception and engagement. The elements I was sure to consider for the site include the following.
