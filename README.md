@@ -23,6 +23,9 @@ You will find two links provided below: one directs you to the deployed project,
 
 [Hunter Gatherer API](https://hunter-gatherer-api-42e8d7d609ef.herokuapp.com/)
 
+I opted to utilize Django Rest Framework (DRF) for my project because it streamlines the process of developing APIs through its comprehensive and adaptable toolkit for creating RESTful services, thereby accelerating the development timeline. DRF comes equipped with essential features such as authentication, serialization, and viewsets, which provide significant functionality right from the start, minimizing the necessity for custom coding. For the frontend, I chose React for its capability to develop reusable and easily maintainable components. React enhances the management of the user interface's state, and its Virtual DOM facilitates rapid updates, even amidst intricate changes. 
+
+The combination of DRF and React enabled me to create a robust, efficient, and scalable web application.
 
 # User Experience Design
 ## Strategy
@@ -101,6 +104,7 @@ You will find below the imagery of the model relationship and schema that I deve
 ![API Model relationship](/documentation/wireframes/model%20relationship.png)
 ![API Schema](/documentation/wireframes/database%20schema.png)
 
+[Here is a Link](/documentation/rest-api-images/) to a collection of screenshots that showcase REST framework.
 
 ## Structure
 With a well-defined scope in place, I shifted my focus to the project's structural design. This blueprint guaranteed that the site's content was systematically arranged, allowing users to swiftly locate what they needed. The framework for this product emphasized several key elements.
@@ -195,6 +199,10 @@ When choosing a font for this application, it was vital to prioritize exceptiona
 - GitHub - for storing the code
 
 - Gitpod - for developing the project
+
+- Django Rest Framework - for developing my API
+
+- React - for creating my frontend component
 
 - Heroku - for deployment of the project
 
@@ -350,6 +358,9 @@ Navigate to the GitHub Repository you want to clone:
 - The project will now have been cloned on your local machine for use.
 
 # Credits
+## Content
+All images used for this project were sourced from their respective official websites. By obtaining images directly from the original sources, we aim to maintain authenticity and accuracy in our representation of the content.
+
 ## Code
 I would like to express my gratitude to the Code Institute walk-through project for offering a robust foundation, that has supported my development with this project. Key components integrated into my own code inspired by the walk-through, include the Navigation Bar, and Login/ Logout pages. I have also gained valuable knowledge from studying the official documentation for both Django and React.
 
