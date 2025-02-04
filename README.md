@@ -25,7 +25,10 @@ From the beginning, I knew it was crucial to outline the strategic objectives of
 Through thorough research, I was able to craft a clear vision that steered the project, guaranteeing that each feature developed met user expectations. Below is a table showcasing user stories along with the criteria that ultimately shaped the project’s development.
 
 ### User Stories
-#### General
+
+<details>
+<summary>General</summary>
+
 | Title | Story | Acceptance Criteria |
 | ----------- | ----------- | ----------- |
 | Navigation Links | As a First Time user, I want to be able to easily navigate through the app, so that I can find relevant content. | AC1:Users can navigate between site pages, with use of the navbar links.<br><br>AC2:Navigation links change colour when the user hovers over them.<br><br>AC3:A link is highlighted in a different colour to indicate the active/current (pressed) link. |
@@ -37,8 +40,11 @@ Through thorough research, I was able to craft a clear vision that steered the p
 | Manual Testing | As a site developer, I need to perform test to ensure the sites code is robust. | AC1:Test site functionality under various use cases.<br><br>AC2:Evidence test findings within README. |
 | Final Deployment | As a site developer, I need to do a final deployment to Heroku to bring the site online. | AC1:Within Hunter Gatherer setting, DEBUG is set to False in preparation the for final deployment.<br><br>AC2:Hunter Gatherer has been deployed to Heroku. |
 | Create README | As a developer, I need to create a README file to guide users and fellow developers of the site. | AC1:Detail the planning process of the site.<br><br>AC2:Detail each feature, and describe their purpose.<br><br>AC3:Detail any issues had when developing the site.<br><br>AC4:Document the source of any support received with the project development. |
+</details>
 
-#### Accounts/Profiles
+<details>
+<summary>Accounts/Profiles</summary>
+ 
 | Title | Story | Acceptance Criteria |
 | ----------- | ----------- | ----------- |
 | Account Creation | As a First Time user, I want to be able to register for an account, so that I can interact fully with the site. | AC1:Given a username and password, users can register for an account.<br><br>AC2:Given a username and password, users can then log-in to their account. |
@@ -47,16 +53,22 @@ Through thorough research, I was able to craft a clear vision that steered the p
 | Access Tokens | As a user I can maintain my logged-in status until I choose to log out so that my user experience is seamless. | AC1:Access tokens are automatically refreshed before sending requests to the API. |
 | Profile Image Upload | As a site user I would like to be able to upload a profile picture, so that my reviews are better distinguished. | AC1:Users can upload an image to be displayed on their profile page.<br><br>AC2:User profile images will be displayed on all of their reviews. |
 | Credential Update | As a logged in user I can update my username and password so that I can change my display name and keep my profile secure. | AC1:Users can change their username, within their profile.<br><br>AC2:Users can change their password, within their profile. |
+</details>
 
-#### Reviews
+<details>
+<summary>Reviews</summary>
+ 
 | Title | Story | Acceptance Criteria |
 | ----------- | ----------- | ----------- |
 | Leave A Review | As a logged in user I can add a review to a product so that I can share my thoughts about the product. | AC1:A"Write a Review" button is displayed on the product detail page for logged-in users.<br><br>AC2:When the "Write a Review" button is clicked, the user is presented with a form to submit their review.<br><br>AC3:The review form includes fields for a rating (e.g., 1 to 5 stars), a text area for a written review. |
 | Edit/ Delete Review | As a site user I want to be able to modify or delete my reviews to keep reviews relevant. | AC1:A "Edit" button is displayed next to the user’s own review on the product page.<br><br>AC2:Clicking the "Edit" button opens the review form pre-populated with the existing review content.<br><br>AC3:Users can then amend their review, and submit the form to save the changes. |
 | Product Reviews | As a user I can view the product detail page so that I can read the reviews about the product. | AC1:Upon clicking on a product card, users are taken to a detailed view of said product.<br><br>AC2:Product reviews are displayed underneath the product details. |
 | Fair Representation | As a site admin, I would like to limit users to one review per product, to avoid rating distortion. | AC1:The ‘Leave a review’ button with only be shown to signed in users, than haven’t yet submitted a review for a given product. |
+</details>
 
-#### Products
+<details>
+<summary>Products</summary>
+ 
 | Title | Story | Acceptance Criteria |
 | ----------- | ----------- | ----------- |
 | Call To Action | As a first-time user, I want my journey through the site to be clear immediately, so I can quickly begin comparing products. | AC1:The home page clearly displays categories for the use to select.<br><br>AC2: Users can click on a category link to be taken to a corresponding product list. |
@@ -64,6 +76,7 @@ Through thorough research, I was able to craft a clear vision that steered the p
 | Comparison Modal | As a user, I want to view detailed specifications for each product in the comparison so that I can easily evaluate their features. | AC1: A check box is displayed on product cards in the product list.<br><br>AC2: Once the check box is selected, the product is added to the comparison list.<br><br>AC3: Products in the comparison list are displayed in a modal. |
 | Comparison Modal Reset | As a user, I want to be able to quickly reset or clear my comparison selections so that I can start a new comparison easily. | AC1:A "Clear Comparison" or "Reset Selections" button is visible on the comparison modal.<br><br>AC2: Once the button is pressed, all products will be removed from the modal. |
 | Product List Order | As a user, I want to be able to sort comparison results by different metrics to make browsing easier. | AC1: Users can order the product list by rating, price. |
+</details>
 
 ## Scope
 Having solidified the strategy, I shifted my focus to defining the project's scope. This meant outlining the precise features and functionalities that would be included in the initial launch. By prioritizing these features according to user needs and my strategic objectives, I crafted a roadmap that harmonized ambition with practicality. To ensure the delivery of a high-quality minimal viable product, I concentrated on the following key features. 
@@ -108,22 +121,32 @@ By designing each of these planes with a user centered focus, I could provide an
 
 ### Features
 #### Accounts
-Accessing the site is a breeze with our login portal, designed for both security and ease of use for registered members, just input your credentials to kick off your product compressions. If you're new to Hunter Gatherer, getting started is just as simple—fill out a quick form where you’ll select a Username, provide a valid Email for verification, and set up a strong Password to keep your account safe.
+Accessing the site is a breeze with our login portal, designed for both security and ease of use for registered members, just input your credentials to kick off your product compressions. If you're new to Hunter Gatherer, getting started is just as simple—fill out a quick form where you’ll select a Username, and provide a strong Password to keep your account safe.
+![Account login form](/documentation/hg-images/login%20form.png)
+![Account register form](/documentation/hg-images/register%20form.png)
+
+
 Users can enhance their experience on the site by adjusting the default settings and personalizing profiles to reflect their unique identities. A key feature is the ability to change usernames, allowing individuals to showcase their creativity and personality. This makes their presence more memorable. Additionally, users can upload profile pictures that visually represent them, fostering connections within the community. Choosing an image that reflects their identity or interests helps create a more engaging online persona. 
+![User profile page](/documentation/hg-images/profile%20page.png)
 
 #### Navigation
-The navigation bar is packed with essential features that enhance the user experience. It offers direct links to crucial sections of the website, making content easily accessible. Crafted with responsiveness in mind, the navbar adjusts effortlessly to various screen sizes, showcasing all links prominently. On smaller devices, it transforms into a drop-down menu for a tidy and organized navigation experience. Moreover, the navbar emphasizes the active page, giving users clear visual indicators of their position within the site. 
+The navigation bar is packed with essential features that enhance the user experience. It offers direct links to crucial sections of the website, making content easily accessible. Crafted with responsiveness in mind, the navbar adjusts effortlessly to various screen sizes, showcasing all links prominently. On smaller devices, it transforms into a drop-down menu for a tidy and organized navigation experience. Moreover, the navbar emphasizes the active page, giving users clear visual indicators of their position within the site.
 
 #### Product comparison modal
-The comparison modal is the standout feature of Hunter Gatherer, allowing users to compare products side by side. Shoppers will be able to select which products they would like to display on the modal by toggling the ‘comparison’ icon found within the product cards. Once in the modal, important specs and details will be laid out for easy viewing, leaving no stone unturned.
+The comparison modal is the standout feature of Hunter Gatherer, allowing users to compare products side by side. Shoppers will be able to select which products they would like to display on the modal by toggling the ‘comparison’ icon found within the product cards. Once in the modal, important specs and details will be laid out for easy viewing, leaving no stone unturned. 
+![Product comparison modal](/documentation/hg-images/comparison%20modal.png)
 
 #### Comprehensive product view
-Upon selecting a product category from the homepage, users will be directed to a curated list of items within that category. Each product card showcases an image of the product, its rating, and the price, along with a timestamp indicating the last update. Moreover, these cards include a 'comparison' button icon, allowing users to easily add or remove products from the comparison modal. By clicking on a product image, users will be taken to an in-depth view of that specific product.
+Upon selecting a product category from the homepage, users will be directed to a curated list of items within that category. Each product card showcases an image of the product, its rating, and the price, along with a timestamp indicating the last update. Moreover, these cards include a 'comparison' button icon, allowing users to easily add or remove products from the comparison modal. By clicking on a product image, users will be taken to an in-depth view of that specific product. 
+![Product list](/documentation/hg-images/product%20list.png)
+![Product detail view](/documentation/hg-images/product%20detail.png)
 
 #### Product review
 User reviews play a crucial role in the decision-making journey, providing authentic insights into products, that enable customers to make informed choices. Because of this, product reviews are displayed directly beneath each product's detailed view. 
 
 A product review creation form can be accessed near to the bottom of the page allowing users to submit their reviews, complete with a rating and a comment. Additionally, users can easily edit their reviews if needed or remove them entirely. An authenticated user is allowed to submit just one review for each product, ensuring each product is given a fair rating.
+![Review creation form](/documentation/hg-images/review%20creation%20form.png)
+![Review edit form](/documentation/hg-images/review%20edit%20form.png)
 
 ### Potential Future Features
 #### Comparison Modal Reset
@@ -140,9 +163,11 @@ Users will be allowed to submit only one review per product to maintain the inte
 
 ### Colour Scheme
 The colour scheme utilized in this application combines light, airy, and understated tones, resulting in a fresh and balanced aesthetic. The colours are chosen to evoking a sense of calm and clarity.
+![Project colour palette](/documentation/Colour%20Palette.png)
 
 ### Typography
 When choosing a font for this application, it was vital to prioritize exceptional readability, ensuring that users could easily grasp the text. The selected font had to feature distinct letterforms to prevent any mix-ups between similar characters, such as 'l' and 'I' or '0' and 'O'. Additionally, it required a well-balanced weight and spacing to maintain clarity on both small screens and desktops. The font I ultimately decided on was Roboto by Google as it meets all the criteria previously discussed, making it a perfect fit for this project.
+![Project typography](/documentation/Google%20Fonts.png)
 
 # Tools Used
 - Balsamiq Wireframes - for creating wireframes & flowcharts
@@ -178,8 +203,11 @@ When choosing a font for this application, it was vital to prioritize exceptiona
 - PEP8 Validator - for validating the python code
 
 # Testing
+ 
+*Kindly select the dropdown menu to view the testing procedures conducted, along with the corresponding results.*
+<details>
+<summary>Backend Testing</summary>
 
-## Backend Testing
 | Feature | Testing Procedure | Expected Outcome | Result |
 | ----------- | ----------- | ----------- | ----------- |
 | Profile List Status Code | Input ‘profiles/’ URL path extension, checking the status code returned on launch. | The object list renders results, with page returning a 200 status code(successful). | Passed |
@@ -203,8 +231,11 @@ When choosing a font for this application, it was vital to prioritize exceptiona
 | Review Detail Form PUT method | Whilst authenticated, navigate to a review I own, ensuring the review edit form renders. Amend the current object instance values (product, rating) and selected PUT. | The object values are updated to reflect those that were present in the form when the PUT method was executed. | Passed |
 | Login | Input login credentials (username, password) into the relevant fields and selected login. Navigate to my profile, checking for the ‘is_owner’ value, and the edit form. | The ‘is_owner’ value returns ‘True’, and the edit form renders below the profile object list. | Passed |
 | Logout | Click the drop-down button labelled <username> at the top of the screen, and select logout. Then navigate to my profile, checking for the ‘is_owner’ value, and the edit form. | The ‘is_owner’ value in the profile object returns ‘False’, without the edit form below. | Passed |
+</details>
 
-## Frontend Testing
+<details>
+<summary>Frontend Testing</summary>
+ 
 | Feature | Testing Procedure | Expected Outcome | Result |
 | ----------- | ----------- | ----------- | ----------- |
 | Account Creation | On the home screen, I navigated to the ‘register’ link found in the nav bar and clicked. Once directed to the account creation page, I input account credentials into the relevant fields and selected register. Once directed to the account creation page, I selected register without inputting data into the fields. | When the ‘register’ link is clicked, the user is directed to the account creation page. On the account creation page, the user inputs relevant credentials and clicks register, they are redirected to the login page to login with their chosen credentials. On the account creation page, if the user clicks register without inputting all required information, relevant informative alerts are displayed detailing the errors. | Passed |
@@ -221,7 +252,10 @@ When choosing a font for this application, it was vital to prioritize exceptiona
 | Profile Username Change | On the profile page, I clicked ‘save username’ button without amending the data. On the profile page, I amended the data in the username field and clicked ‘save username’ button. | Once the ‘save username’ button is clicked without amending any information, an informative message is displayed below the field detailing the error. Once the data in the username field is amended and save is clicked, the user is directed back to the previous page and new username is presented in the navbar. | Passed |
 | Profile Password Change | On the profile page, I clicked ‘save password’ button without inputting any information. On the profile page, I amended the data in the password fields and clicked ‘save password’ button. | Once the ‘save password’ button is clicked without inputting any information, an informative message is displayed below the fields detailing the error(s). Once the data in the password fields has been amended and save is clicked, the user is directed back back to the previous page, with the updated password saved. | Passed |
 | Profile image change | On the profile page, I clicked the ‘save profile picture’ button without selecting a new image. On the profile page, I clicked the ‘choose file’ button and selected my chosen image from my files and then clicked save. | Once the ‘save profile picture’ button was clicked without selecting a new file, no action is taken. Once the ‘save profile picture’ button was clicked after selecting a new image from chosen files, the profile image is updated and the user is directed back to the home screen. The new profile picture is displayed on the user reviews. | Passed |
+</details>
 
+## Validation
+[Here is a Link](/documentation/api-validation/) to a collection of screenshots that showcase the Hunter Gatherer API Python code. I am pleased to report that the code is free of errors.
 
 ## Solved Bugs
 | Feature Referenced | Issue | Solution |
